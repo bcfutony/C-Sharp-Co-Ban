@@ -20,6 +20,7 @@ namespace tong_1_den_n
             
             Console.WriteLine($" uoc so chung LN cua {a} va {b} la: {ucln}");
             Console.WriteLine($" uoc so chung LN cua {a} va {b} la: {BCNN(a,b)}");
+            Console.WriteLine($"hello world");
 
 
         } //dong ham Main
