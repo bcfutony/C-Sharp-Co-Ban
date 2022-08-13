@@ -11,10 +11,69 @@ namespace tong_1_den_n
         static void Main(string[] args)
         {
            
-            Bai_62();           
+            Bai_65();           
             //Bai_43(n);
         } //dong ngoac main
+        //Bài 64 + 65 + 66: Giải phương trình bậc 1, 2, 4
+        public static int Bai_64()
+        {
+            //ax+b=0
+            Console.WriteLine("nhap: a");
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("nhap: b");
+            int b = int.Parse(Console.ReadLine());
+            if( a == 0)
+            {
+                if (b == 0) { Console.WriteLine("pt vo so nghiem"); }
+                else { Console.WriteLine("pt VO nghiem"); }
+            }
+            else
+            {
+                Console.WriteLine($"pt co 1 nghiem x ={-b * 1.0 / a}");
+            }
+            return 64;
+        }
+        public static int Bai_65()
+        {
+            //ax2 +bx +c = 0
+            Console.Write("nhap a:");
+            int a = int.Parse(Console.ReadLine());
+            Console.Write("nhap b:");
+            int b = int.Parse(Console.ReadLine());
+            Console.Write("nhap c:");
+            int c = int.Parse(Console.ReadLine());
 
+            if (a == 0)
+            {
+                //bx+c=0
+                if(b == 0)
+                {
+                    if(c==0) { Console.WriteLine("pt vo so nghiem"); }
+                    else { Console.WriteLine("pt VO nghiem"); }
+                }
+                else { Console.WriteLine($"pt co nghiem la {-c * 1.0 / b}"); }
+            }
+            else //a !=0
+            {
+                int delta = b * b - 4 * a * c;
+                if(delta <0)
+                {
+                    Console.WriteLine("pt VO nghiem");
+                }
+                else if(delta == 0)
+                {
+                    Console.WriteLine($"pt co nghiem kep: {-b / (2.0 * a)}");
+                }
+                else
+                {
+                    //pt co 2 nghiem (-b +delta)/2a
+                    Console.WriteLine($"pt co 2 nghiem: {(-b + Math.Sqrt(delta)) / (2.0 * a)}, " +
+                        $"{(-b - Math.Sqrt(delta)) / (2.0 * a)}");
+                }
+            }
+            return 65;
+        }
+        
         //Bài 62: Cho 2 số nguyên dương a và b. Hãy tìm ước chung lớn nhất của 2 số này.
         //Bài 63: Cho 2 số nguyên dương a và b.Hãy tìm bội chung nhỏ nhất của 2 số này
         public static int Bai_62()
@@ -52,7 +111,39 @@ namespace tong_1_den_n
             return soBCNN;
         }
 
+        //Bài 60: Hãy kiểm tra các chữ số của số nguyên dương n có tăng dần từ trái sang phải hay không
+        //Bài 61: Hãy kiểm tra các chữ số của số nguyên dương n có giảm dần từ trái sang phải hay không
+         public static int Bai_60()
+        {
+            Console.WriteLine("nhap n");
+            int n = int.Parse(Console.ReadLine());
+            int an = n % 10; //lay so dau tien. vd 143 ->3
+            bool sotangdan = false;
+            for(int i =n/10; i !=0; i = i / 10)
+            {
+                int am = i % 10; //so thu 2. vd 143 ->4
+                if(am < an)
+                {
+                    Console.WriteLine($" {n} KHONG la so co chu so tang dan");
+                    sotangdan = false;
+                    break;
+                }
+                else
+                {
+                    an= am;
+                    sotangdan = true;
+                }
+            }
+            if (sotangdan)
+            {
+                Console.WriteLine($" {n} la so tang dan");
+            }
+            return 56;
+        }
+
         //Bài 59: Hãy kiểm tra số nguyên dương n có phải là số đối xứng hay không
+
+
 
         //Bài 56: Hãy kiểm tra số nguyên dương n có toàn chữ số lẻ hay không
         //Bài 57: Hãy kiểm tra số nguyên dương n có toàn chữ số chẵn hay không
