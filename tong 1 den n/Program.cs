@@ -10,41 +10,20 @@ namespace tong_1_den_n
     {
         static void Main(string[] args)
         {
-            //Bài 62: Cho 2 số nguyên dương a và b. Hãy tìm ước chung lớn nhất của 2 số này.
-            //Bài 63: Cho 2 số nguyên dương a và b. Hãy tìm bội chung nhỏ nhất của 2 số này
-            Console.WriteLine("nhap a:");
-            int a = int.Parse(Console.ReadLine());
-            Console.WriteLine("nhap b:");
-            int b = int.Parse(Console.ReadLine());
-            int ucln = UCLN(a, b);
+            //bai 42
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int S = 0;
+            int i = 1;
             
-            Console.WriteLine($" uoc so chung LN cua {a} va {b} la: {ucln}");
-            Console.WriteLine($" uoc so chung LN cua {a} va {b} la: {BCNN(a,b)}");
-            Console.WriteLine($"hello world");
-            Console.WriteLine($"hello git test");
-
-        } //dong ham Main
-        public static int UCLN(int a, int b)
-        {
-            while (a != b)
+            while (S + i < n) //i =0 , 1, 2, ... i lon nhat la k
             {
-                if (a > b)
-                {
-                    a = a - b;
-                }
-                else
-                {
-                    b = b - a;
-                }
+                i++;         //
+                S = S + i;  // tương đương 1 dòng S += ++i;
             }
-            return a;
-        }
 
-        public static int BCNN(int a, int b)
-        {
-            int ketqua = UCLN(a, b);
-            int bcnn = a * b / ketqua;
-            return bcnn;
-        }
+            Console.WriteLine(i-1);
+
+        } //dong ngoac main
     }
 }
