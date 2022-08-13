@@ -11,7 +11,7 @@ namespace tong_1_den_n
         static void Main(string[] args)
         {
            
-            Bai_43();           
+            Bai_45();           
             //Bai_43(n);
         } //dong ngoac main
 
@@ -60,6 +60,45 @@ namespace tong_1_den_n
             }
             Console.WriteLine($"tong cac so cua {n} la {S}");
             return 1000;
+        }
+        //Bài 45: Hãy tính tích các chữ số của số nguyên dương n
+        //Bài 46: Hãy đếm số lượng chữ số lẻ của số nguyên dương n
+        //Bài 47: Hãy tính tổng các chữ số chẵn của số nguyên dương n
+        //Bài 48: Hãy tính tích các chữ số lẻ của số nguyên dương n
+        public static int Bai_45()
+        {
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+
+            int T = 1;
+            int demle = 0;
+            int Schan = 0;
+
+            for(int i = n; i !=0; i = i / 10)
+            {
+                //i%10: chu so
+                T = T * (i % 10);
+                int a = i % 10; //bai 46
+                if (a % 2 == 1) //so le
+                { 
+                    demle++; //dem so
+                } 
+                //bai 47
+                if(a%2==0) //so chan
+                {
+                    Schan = Schan + a; //tong
+                }
+                //bai 49
+                if (i < 10)
+                {
+                    Console.WriteLine($"chu so dau tien cua {n} la {i}");
+                }
+
+            }
+            Console.WriteLine($"Tich cac so cua {n} la: {T}");
+            Console.WriteLine($"So luong so le cua {n} la: {demle}");
+            Console.WriteLine($"Tong so luong so chan cua {n} la: {Schan}");
+            return 45;
         }
 
     }
