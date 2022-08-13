@@ -10,19 +10,16 @@ namespace tong_1_den_n
     {
         static void Main(string[] args)
         {
-            //cac bai giong nhau
-            Console.WriteLine("nhap n:");
-            int n = int.Parse(Console.ReadLine());
-
-            Bai_44(n);           
+           
+            Bai_43();           
             //Bai_43(n);
         } //dong ngoac main
 
         //bai 42
-        public static int Bai_42(int n)
+        public static int Bai_42()
         {
-            //Console.WriteLine("nhap n:");
-            //int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
             int S = 0;
             int i = 1;
 
@@ -36,18 +33,25 @@ namespace tong_1_den_n
         }
 
         //bai 43: Hãy đếm số lượng chữ số của số nguyên dương n
-        public static int Bai_43(int n)
+        public static int Bai_43()
         {
-            int i = 1;
-            for (i = n; i != 0; i = i / 10)
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int dem = 0;
+            
+            for (int i = n; i != 0; i = i / 10)
             {
-                Console.WriteLine(i % 10);               
+                dem++;
             }
-            return i % 10; //cai gi cung dc
+            Console.WriteLine($"tong cac chu su cua {n} la {dem}");
+            return 43; //cai gi cung dc
         }
         //Bài 44: Hãy tính tổng các chữ số của số nguyên dương n
-        public static int Bai_44(int n)
+        public static int Bai_44()
         {
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+
             int S = 0;
             for (int i = n; i != 0; i = i / 10)
             {
