@@ -10,10 +10,88 @@ namespace tong_1_den_n
     {
         static void Main(string[] args)
         {
-           
-            Bai_65();           
-            //Bai_43(n);
+
+            Bai_71();
+            //ax2 +bx +c = 0            
+            
         } //dong ngoac main
+
+        //71, 72, 73, 74 tuong tu
+        //Bài 71: Tính S(x, n) = -x + x^2/(1 + 2) – x^3/(1 + 2 + 3) + … + (-1)^n * x^n/(1 + 2 +… + n)
+        public static int Bai_71()
+        {
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            Console.Write("nhap x:");
+            int x = int.Parse(Console.ReadLine());  
+
+            int Stong = 0;
+            double S = 0;
+
+            for (int i = 1; i <= n; i++)
+            {
+                Stong = Stong + i; //Stong +=i. tong 1+2+3...
+                S = S + Math.Pow(-1,i)*Math.Pow(x,i) / Stong;
+            }
+            Console.WriteLine($"cac tong la: {S}");
+            return 71;
+        }
+
+        //Bài 70: Tính S(n) = 1 – 1/(1 + 2) + 1/(1 + 2 + 3)  + … + (-1)^n+1 * 1/(1 + 2 + 3+ … + n)
+        public static int Bai_70()
+        {
+            Console.Write("nhap n:");
+            double n = double.Parse(Console.ReadLine());
+            int Stong = 0;
+            double S = 0;
+
+            for (int i =1; i <= n; i++)
+            {
+                Stong =Stong + i; //Stong +=i. tong 1+2+3...
+                S = S + 1.0*Math.Pow(-1,i+1) / Stong;
+            }
+            Console.WriteLine($"cac tong la: {S}");
+            return 70;
+        }
+        //Bài 68: Tính S(x, n) = -x^2 + x^4  + … + (-1)^n * x^2n
+        public static int Bai_68()
+        {
+            Console.Write("nhap n:");
+            double n = double.Parse(Console.ReadLine());
+            Console.Write("nhap x:");
+            double x = double.Parse(Console.ReadLine());
+            double S = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                S = S + Math.Pow(-1, i) * Math.Pow(x, 2 * i);
+            }
+            Console.WriteLine($"{S}");
+            return 68;
+        }
+        //Bài 67: Tính S(x, n) = x – x^2 + x^3 + … + (-1)^n+1 * x^n
+        public static int Bai_67()
+        {
+            Console.Write("nhap n:");
+            double n = double.Parse(Console.ReadLine());
+            Console.Write("nhap x:");
+            double x = double.Parse(Console.ReadLine());
+
+            double S = 0, S2=0;
+            double T = 1;
+            x = -x;
+            for( int i = 1; i <= n; i++)
+            {   //cach 1
+                S2 = S2 + Math.Pow(-x, i)*Math.Pow((-1),i+1);
+                //cach 2
+                T = T * x;
+                S = S + T;
+                
+            }
+            Console.WriteLine($"tong la: {-S}, T:{T}, x:{x}");
+            Console.WriteLine($"tong la: {S2}, T:{T}, x:{x}");
+            return 67;
+        }
+
         //Bài 64 + 65 + 66: Giải phương trình bậc 1, 2, 4
         public static int Bai_64()
         {
