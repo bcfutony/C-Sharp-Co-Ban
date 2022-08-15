@@ -336,35 +336,6 @@ namespace tong_1_den_n
         //Bài 79: Hãy đếm số lượng chữ số của số nguyên dương n
         //xem phan tren
 
-        //Bài 75: Kiểm tra số nguyên 4 byte có dạng 2^k hay không
-        //Bai 76 tuong tu
-        public static int Bai_75()
-        {
-            Console.Write("nhap n:");
-            int n = int.Parse(Console.ReadLine());
-            if (n <= 0)
-            {
-                Console.WriteLine("vui long nhap n>0: ");
-                n = int.Parse(Console.ReadLine());
-            }
-            bool la2K = true;
-            while (n > 1)
-            {
-                if(n%2 != 0) //ko chia het cho 2
-                {
-                    la2K = false;
-                    Console.WriteLine($" so n KHONG CO dang 2k");
-                    break;
-                }
-                n = n / 2;
-            }
-            if (la2K)
-            {
-                Console.WriteLine($" so n co dang 2k");
-            }
-            return 75;
-        }
-
         //71, 72, 73, 74 tuong tu
         //Bài 71: Tính S(x, n) = -x + x^2/(1 + 2) – x^3/(1 + 2 + 3) + … + (-1)^n * x^n/(1 + 2 +… + n)
         public static int Bai_71()
