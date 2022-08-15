@@ -11,10 +11,223 @@ namespace tong_1_den_n
         static void Main(string[] args)
         {
 
-            Bai_71();
+            Bai_99();
             //ax2 +bx +c = 0            
             
         } //dong ngoac main
+
+        //CHUONG 3 CAU TRUC DIEU KHIEN
+        //Bài 99: Viết chương trình nhập vào 3 số thực.
+        //Hãy in 3 số ấy ra màn hình theo thứ tự tang dần mà chỉ dùng tối đa 1 biến phụ
+        //Giống Interchange sort
+        //a so sánh với b và c
+        //b so sánh với c
+        public static int Bai_99()
+        {
+            Console.Write("nhap a:");
+            double a = double.Parse(Console.ReadLine());
+            Console.Write("nhap b:");
+            double b = double.Parse(Console.ReadLine());
+            Console.Write("nhap c:");
+            double c = double.Parse(Console.ReadLine());
+            double tmp;
+            if(a > b)
+            {
+                tmp = a;
+                a = b;
+                b = tmp;
+            }
+            if(a > c)
+            {
+                tmp = a;
+                a = c;
+                c = tmp;                
+            }
+            if(b > c)
+            {
+                tmp = b;
+                b = c;
+                c =tmp;
+            }
+            Console.WriteLine($"3 so a, b, c theo thu tu tang dan {a} {b} {c}");
+            return 99;
+        }
+
+        //Bài 97: nhập 3 cạnh của 1 tam giác, cho biết đó là tam giác gì
+        public static int Bai_97()
+        {
+            Console.Write("nhap a:");
+            double a = double.Parse(Console.ReadLine());
+            Console.Write("nhap b:");
+            double b = double.Parse(Console.ReadLine());
+            Console.Write("nhap c:");
+            double c = double.Parse(Console.ReadLine());
+            if ((a + b) <= c || (a + c) <= b || (b + c) <= a)
+            {
+                Console.WriteLine("tam giac ko hop le");
+            }
+            else
+            {
+                if (a == b && b == c && c == a)
+                {
+                    Console.WriteLine("tam giac deu");
+                }
+                else
+                {
+                    if (a * a + b * b == c * c || b * b + c * c == a * a || a * a + c * c == b * b)
+                    {
+                        //Console.WriteLine("tam giac vuong");
+                        if (a == b || b == c || c == a) { Console.WriteLine("tg vuong can"); }
+                        else { Console.WriteLine("tam giac vuong"); }
+                    }
+                    else if (a == b || b == c || c == a) { Console.WriteLine("tg can"); }
+                    else
+                    {
+                        Console.WriteLine("tam giac thuong");
+                    }
+                }
+            }
+            return 97;
+        }
+        //Bài 95: nhập 3 số thực. Hãy thay tất cả các số âm bằng trị tuyệt đối của nó
+        public static int Bai_95()
+        {
+            Console.WriteLine("nhap a:");
+            double a = double.Parse(Console.ReadLine());
+            Console.WriteLine("nhap b:");
+            double b = double.Parse(Console.ReadLine());
+            Console.WriteLine("nhap c:");
+            double c = double.Parse(Console.ReadLine());
+            if (a < 0) { a = -a; }
+            if (b < 0) { b = -b; }
+            if (c < 0) { c = -c; }
+            Console.WriteLine($"3 so a, b, c la: {a} , {b} , {c}");
+            return 95;
+
+        }
+        //Bài 94: Viết chương trình in ra tất cả các số lẻ nhỏ hơn 100 trừ các số 5, 7, 93
+        public static int Bai_94()
+        {
+            for(int i =1; i < 100; i = i + 2)
+            {
+                //số 5, 7, 93
+                if(i !=5 && i != 7 && i != 93)
+                {
+                    Console.WriteLine($"cac so le la: {i}");
+                }
+                
+            }
+            return 94;
+
+        }
+
+        //Bài 92: Tìm ước số chung lớn nhất của 2 số nguyên dương
+        //Bài 93: Viết chương trình kiểm tra 1 số có phải là số nguyên tố hay không
+
+        //Bài 91: In tất cả các số nguyên dương lẻ nhỏ hơn 100
+        public static int Bai_91()
+        {
+            for (int i = 1; i <100; i = i + 2)
+            {
+                Console.WriteLine(i);
+            }
+            return 91;
+        }
+        //Bài 89: tổng các giá trị lẻ nguyên dương nhỏ hơn N
+        //Bài 90: tìm số nguyên dương m lớn nhất sao cho 1 + 2 + … + m < N. Giong 42
+
+        //Bài 88: Hãy sử dụng vòng lặp for để xuất tất cả các ký tự từ A đến Z
+        public static int Bai_88()
+        {
+            char kytu;
+            for(kytu = 'A'; kytu <= 'Z'; kytu++)
+            {
+                Console.WriteLine(kytu);
+            }
+            return 88;
+        }
+
+        //Bài 87: Tìm số nguyên dương n nhỏ nhất sao cho 1 + 2 + … + n > 10000
+        public static int Bai_87()
+        {
+            int S = 0;
+            
+            for (int i = 1; S<=10000; i++)
+            {
+                S = S + i;
+                if(S > 10000)
+                {
+                    //in i
+                    Console.WriteLine($"tong la: {S} gia tri i: {i-1}");
+                    break;
+                }
+            }
+            return 87;
+        }
+        //Bài 86: Tính S(n) = 1^3 + 2^3 + … + N^3. S=S+Math.Pow(i,3)
+        //Bài 85: Nhập vào tháng của 1 năm. Cho biết tháng thuộc quý mấy trong năm
+        public static int Bai_85()
+        {
+            Console.WriteLine("vui long nhap thang:");
+            int n = int.Parse(Console.ReadLine());
+            if(n == 1 || n == 2 || n == 3) { Console.WriteLine($"{n}: quy 1"); }
+            else if (n == 4 || n == 5 || n == 6) { Console.WriteLine($"{n}: quy 2"); }
+            else if (n == 7 || n == 8 || n == 9) { Console.WriteLine($"{n}: quy 3"); }
+            else { Console.WriteLine($" {n}: quy 4");}
+            return 85;
+        }
+        //bai 84 xem bai 64
+        //bai 83 dung tich a*b>0. Viết chương trình nhập 2 số thực, kiểm tra xem chúng có cùng dấu hay không
+        //Bài 82: Viết chương trình tìm số lớn nhất trong 3 số thực a, b, c
+        public static int Bai_82()
+        {
+            Console.Write("nhap a:");
+            double a = double.Parse(Console.ReadLine());
+            Console.Write("nhap b:");
+            double b = double.Parse(Console.ReadLine());
+            Console.Write("nhap c:");
+            double c = double.Parse(Console.ReadLine());
+            double max;
+            max = a;
+            if(b > max) { max = b; }
+            if(c > max) { max = c; }
+            Console.WriteLine($"so lon nhat la {max}");
+            return 82;
+        }
+
+        //Bài 77: Viết chương trình tính tổng của dãy số sau: S(n) = 1 + 2 + 3 + … + n
+        //Bài 78: Liệt kê tất cả các ước số của số nguyên dương n
+        //Bài 79: Hãy đếm số lượng chữ số của số nguyên dương n
+        //xem phan tren
+
+        //Bài 75: Kiểm tra số nguyên 4 byte có dạng 2^k hay không
+        //Bai 76 tuong tu
+        public static int Bai_75()
+        {
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            if (n <= 0)
+            {
+                Console.WriteLine("vui long nhap n>0: ");
+                n = int.Parse(Console.ReadLine());
+            }
+            bool la2K = true;
+            while (n > 1)
+            {
+                if(n%2 != 0) //ko chia het cho 2
+                {
+                    la2K = false;
+                    Console.WriteLine($" so n KHONG CO dang 2k");
+                    break;
+                }
+                n = n / 2;
+            }
+            if (la2K)
+            {
+                Console.WriteLine($" so n co dang 2k");
+            }
+            return 75;
+        }
 
         //71, 72, 73, 74 tuong tu
         //Bài 71: Tính S(x, n) = -x + x^2/(1 + 2) – x^3/(1 + 2 + 3) + … + (-1)^n * x^n/(1 + 2 +… + n)
@@ -220,7 +433,10 @@ namespace tong_1_den_n
         }
 
         //Bài 59: Hãy kiểm tra số nguyên dương n có phải là số đối xứng hay không
-
+        /// <summary>
+        /// bai nay chua lam
+        /// </summary>
+        /// <returns></returns>
 
 
         //Bài 56: Hãy kiểm tra số nguyên dương n có toàn chữ số lẻ hay không
@@ -278,158 +494,7 @@ namespace tong_1_den_n
             }
             return 57;
         }
-        //bai 42
-        public static int Bai_42()
-        {
-            Console.WriteLine("nhap n:");
-            int n = int.Parse(Console.ReadLine());
-            int S = 0;
-            int i = 1;
-
-            while (S + i < n) //i =0 , 1, 2, ... i lon nhat la k
-            {                        
-                S = S + i;  //0+1+2+3+...
-                i++;
-            }
-            Console.WriteLine(i - 1);
-            return 1000; //dua  vao main bo di
-        }
-
-        //bai 43: Hãy đếm số lượng chữ số của số nguyên dương n
-        public static int Bai_43()
-        {
-            Console.WriteLine("nhap n:");
-            int n = int.Parse(Console.ReadLine());
-            int dem = 0;
-            
-            for (int i = n; i != 0; i = i / 10)
-            {
-                dem++;
-            }
-            Console.WriteLine($"tong cac chu su cua {n} la {dem}");
-            return 43; //cai gi cung dc
-        }
-        //Bài 44: Hãy tính tổng các chữ số của số nguyên dương n
-        public static int Bai_44()
-        {
-            Console.WriteLine("nhap n:");
-            int n = int.Parse(Console.ReadLine());
-
-            int S = 0;
-            for (int i = n; i != 0; i = i / 10)
-            {
                 
-                S = S + i%10; //tong cac chu so
-            }
-            Console.WriteLine($"tong cac so cua {n} la {S}");
-            return 1000;
-        }
-
-        //Bài 45: Hãy tính tích các chữ số của số nguyên dương n
-        //Bài 46: Hãy đếm số lượng chữ số lẻ của số nguyên dương n
-        //Bài 47: Hãy tính tổng các chữ số chẵn của số nguyên dương n
-        //Bài 48: Hãy tính tích các chữ số lẻ của số nguyên dương n
-        //bai 49
-        public static int Bai_45()
-        {
-            Console.WriteLine("nhap n:");
-            int n = int.Parse(Console.ReadLine());
-
-            int T = 1;
-            int demle = 0;
-            int Schan = 0;
-
-            for(int i = n; i !=0; i = i / 10)
-            {
-                //i%10: chu so
-                T = T * (i % 10);
-                int a = i % 10; //bai 46
-                if (a % 2 == 1) //so le
-                { 
-                    demle++; //dem so
-                } 
-                //bai 47
-                if(a%2==0) //so chan
-                {
-                    Schan = Schan + a; //tong
-                }
-                //bai 49
-                if (i < 10)
-                {
-                    Console.WriteLine($"chu so dau tien cua {n} la {i}");
-                }
-
-            }
-            Console.WriteLine($"Tich cac so cua {n} la: {T}");
-            Console.WriteLine($"So luong so le cua {n} la: {demle}");
-            Console.WriteLine($"Tong so luong so chan cua {n} la: {Schan}");
-            return 45;
-        }
-        
-        //bai 50 51 52 
-        //Bài 50: Hãy tìm số đảo ngược của số nguyên dương n
-        //Bài 51: Tìm chữ số lớn nhất của số nguyên dương n
-        //Bài 52: Tìm chữ số nhỏ nhất của số nguyên dương n
-        public static int Bai_50()
-        {
-            
-            Console.WriteLine("nhap n:");
-            int n = int.Parse(Console.ReadLine());
-            int soluongchuso = 0;
-            int tong = 0;
-            int tich = 1, tongle = 0, tongchan = 0;
-            int sodautien = 0, sothu2 = 0;
-            int min = 9, max = 0;
-            //int demsomin = 0, demsomax = 0;
-            //bien dem nguoc giam 1
-            //j = j -1
-            for (int i = n; i != 0; i = i / 10)
-            {
-                soluongchuso++;
-                tong = tong + i % 10;
-                tich = tich * (i % 10);
-                //min = i % 10;
-                if ((i % 10) <= min)  //tim so nho nhat
-                {
-                    min = i % 10;
-                }
-                if ((i % 10) >= max)  //tim so max
-                {
-                    max = i % 10;
-                }
-                //so nghich dao
-                Console.WriteLine($"so nghich dao: {i % 10}");
-
-                if ((i % 10) % 2 != 0)  //so le
-                {
-                    tongle = tongle + (i % 10);
-                }
-                else //so chan
-                {
-                    tongchan = tongchan + (i % 10);
-                }
-                if (i < 10)
-                {
-                    sodautien = i;
-                }
-                else if (i < 100)
-                {
-                    sothu2 = i % 10;
-                }
-            }
-            Console.WriteLine($"So luong chu so: {soluongchuso}");
-            Console.WriteLine($"tong chu so: {tong}");
-            Console.WriteLine($"tich chu so: {tich}");
-            Console.WriteLine($"tong le chu so: {tongle}");
-            Console.WriteLine($"tong chan chu so: {tongchan}");
-
-            Console.WriteLine($"so dau tien: {sodautien}");
-            Console.WriteLine($"so thu hai: {sothu2}");
-            Console.WriteLine($"min: {min}");
-            Console.WriteLine($"max: {max}");
-
-            return 50;
-        } //ngoai ham
 
         //Bài 53: Hãy đếm số lượng chữ số lớn nhất của số nguyên dương n
         //HAY Bài 54: Hãy đếm số lượng chữ số nhỏ nhất của số nguyên dương n
@@ -490,7 +555,156 @@ namespace tong_1_den_n
             return max;
         }
 
+        //bai 50 51 52 
+        //Bài 50: Hãy tìm số đảo ngược của số nguyên dương n
+        //Bài 51: Tìm chữ số lớn nhất của số nguyên dương n
+        //Bài 52: Tìm chữ số nhỏ nhất của số nguyên dương n
+        public static int Bai_50()
+        {
 
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int soluongchuso = 0;
+            int tong = 0;
+            int tich = 1, tongle = 0, tongchan = 0;
+            int sodautien = 0, sothu2 = 0;
+            int min = 9, max = 0;
+            //int demsomin = 0, demsomax = 0;
+            //bien dem nguoc giam 1
+            //j = j -1
+            for (int i = n; i != 0; i = i / 10)
+            {
+                soluongchuso++;
+                tong = tong + i % 10;
+                tich = tich * (i % 10);
+                //min = i % 10;
+                if ((i % 10) <= min)  //tim so nho nhat
+                {
+                    min = i % 10;
+                }
+                if ((i % 10) >= max)  //tim so max
+                {
+                    max = i % 10;
+                }
+                //so nghich dao
+                Console.WriteLine($"so nghich dao: {i % 10}");
+
+                if ((i % 10) % 2 != 0)  //so le
+                {
+                    tongle = tongle + (i % 10);
+                }
+                else //so chan
+                {
+                    tongchan = tongchan + (i % 10);
+                }
+                if (i < 10)
+                {
+                    sodautien = i;
+                }
+                else if (i < 100)
+                {
+                    sothu2 = i % 10;
+                }
+            }
+            Console.WriteLine($"So luong chu so: {soluongchuso}");
+            Console.WriteLine($"tong chu so: {tong}");
+            Console.WriteLine($"tich chu so: {tich}");
+            Console.WriteLine($"tong le chu so: {tongle}");
+            Console.WriteLine($"tong chan chu so: {tongchan}");
+
+            Console.WriteLine($"so dau tien: {sodautien}");
+            Console.WriteLine($"so thu hai: {sothu2}");
+            Console.WriteLine($"min: {min}");
+            Console.WriteLine($"max: {max}");
+
+            return 50;
+        } //ngoai ham
+        public static int Bai_42()
+        {
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int S = 0;
+            int i = 1;
+
+            while (S + i < n) //i =0 , 1, 2, ... i lon nhat la k
+            {
+                S = S + i;  //0+1+2+3+...
+                i++;
+            }
+            Console.WriteLine(i - 1);
+            return 1000; //dua  vao main bo di
+        }
+
+        //bai 43: Hãy đếm số lượng chữ số của số nguyên dương n
+        public static int Bai_43()
+        {
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int dem = 0;
+
+            for (int i = n; i != 0; i = i / 10)
+            {
+                dem++;
+            }
+            Console.WriteLine($"tong cac chu su cua {n} la {dem}");
+            return 43; //cai gi cung dc
+        }
+        //Bài 44: Hãy tính tổng các chữ số của số nguyên dương n
+        public static int Bai_44()
+        {
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+
+            int S = 0;
+            for (int i = n; i != 0; i = i / 10)
+            {
+
+                S = S + i % 10; //tong cac chu so
+            }
+            Console.WriteLine($"tong cac so cua {n} la {S}");
+            return 1000;
+        }
+
+        //Bài 45: Hãy tính tích các chữ số của số nguyên dương n
+        //Bài 46: Hãy đếm số lượng chữ số lẻ của số nguyên dương n
+        //Bài 47: Hãy tính tổng các chữ số chẵn của số nguyên dương n
+        //Bài 48: Hãy tính tích các chữ số lẻ của số nguyên dương n
+        //bai 49
+        public static int Bai_45()
+        {
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+
+            int T = 1;
+            int demle = 0;
+            int Schan = 0;
+
+            for (int i = n; i != 0; i = i / 10)
+            {
+                //i%10: chu so
+                T = T * (i % 10);
+                int a = i % 10; //bai 46
+                if (a % 2 == 1) //so le
+                {
+                    demle++; //dem so
+                }
+                //bai 47
+                if (a % 2 == 0) //so chan
+                {
+                    Schan = Schan + a; //tong
+                }
+                //bai 49
+                if (i < 10)
+                {
+                    Console.WriteLine($"chu so dau tien cua {n} la {i}");
+                }
+
+            }
+            Console.WriteLine($"Tich cac so cua {n} la: {T}");
+            Console.WriteLine($"So luong so le cua {n} la: {demle}");
+            Console.WriteLine($"Tong so luong so chan cua {n} la: {Schan}");
+            return 45;
+        }
 
     }
 }
