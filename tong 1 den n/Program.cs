@@ -10,11 +10,31 @@ namespace tong_1_den_n
     {
         static void Main(string[] args)
         {
-            Bai_109();
+            Bai_110();
             //ax2 +bx +c = 0                        
         } //dong ngoac main
 
         //CHUONG 3 CAU TRUC DIEU KHIEN
+        //Bài 110: Cần có tổng 200000 đồng từ 3 loại giấy bạc 1000 đồng, 2000 đồng, 5000 đồng.
+        //Lập chương trình để tìm ra tất cả các phương án có thể
+        public static int Bai_110()
+        {
+            int i, j, k;
+            for(i =0; i<=200; i++) //200 * 1000 = 200 000
+            {
+                for (j=0; j<=100; j++) //100 * 2000 = 200 000
+                {
+                    for (k=0; k<=50; k++) //40 *5000 = 200 000
+                    {
+                        if(i*1000 +j*2000 + k*5000 == 200000)
+                        {
+                            Console.WriteLine($"{i} {j} {k}");
+                        }
+                    }
+                }
+            }
+            return 110;
+        }
         //Bài 109: Viết chương trình in bảng cửu chương ra màn hình
         public static int Bai_109()
         {
@@ -85,6 +105,82 @@ namespace tong_1_den_n
             return 105;
 
         }
+        //Bài 102: Viết chương trình nhập vào 1 ngày ( ngày, tháng, năm).
+        //Tìm ngày kế ngày vừa nhập (ngày, tháng, năm)
+
+        public static int Bai_102()
+        {
+            Console.Write("nhap ngay:");
+            int ngay = int.Parse(Console.ReadLine()); //ngay lon hon 0
+            if (ngay <= 0) 
+            {
+                Console.Write("ngay >0, nhap lai nhe:");
+                ngay = int.Parse(Console.ReadLine());
+            }
+            else
+            {
+                Console.Write("nhap thang:");
+                int thang = int.Parse(Console.ReadLine());
+                Console.Write("nhap nam:");
+                int nam = int.Parse(Console.ReadLine());
+
+                int ngayketiep = 0;
+                if ((thang == 4) || (thang == 6) || (thang == 11))
+                {
+                    //30 ngay
+                    if (ngay < 30) { ngayketiep = ngay + 1; }
+                    else
+                    {
+                        ngayketiep = 1;
+                        thang = thang + 1;
+                    }
+                }
+                else if (thang == 2)
+                {
+                    //nam nhuan, 29 ngay
+                    if ((nam % 4 == 0 && nam % 100 != 0) || nam % 400 == 0)
+                    {
+                        if (ngay < 29) { ngayketiep = ngay + 1; }
+                        else
+                        {
+                            ngayketiep = 1;
+                            thang = thang + 1;
+                        }
+                    }
+                    else
+                    {
+                        if (ngay < 28) { ngayketiep = ngay + 1; }
+                        else
+                        {
+                            ngayketiep = 1;
+                            thang = thang + 1;
+                        }
+                    }
+                }
+                else
+                {
+                    //thang 31 ngay
+                    if (ngay < 31) { ngayketiep = ngay + 1; }
+                    else
+                    {
+                        ngayketiep = 1;
+                        if (thang != 12)
+                        {
+                            thang = thang + 1;
+                        }
+                        else
+                        {
+                            thang = 1; nam = nam + 1;
+                        }
+                    }
+                }
+                Console.WriteLine($"Ngay ke tiep la: {ngayketiep}, thang {thang}, nam {nam}");
+            }          
+
+            
+            
+            return 102;
+        }//dong ham
         //Bài 101: Viết chương trình nhập tháng, năm. tháng đó có bao nhiêu ngày?
         public static int Bai_101()
         {
@@ -101,6 +197,8 @@ namespace tong_1_den_n
                 {
                     Console.WriteLine($"{nam} nam nhuan, thang {thang} có ba mươi 29 ngày");
                 }
+                else { Console.WriteLine($"thang {thang} co 28 ngay"); }
+
             }
             else if((thang == 4) || (thang == 6) || (thang == 9) || (thang == 11))
             {
