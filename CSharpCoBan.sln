@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tong 1 den n", "tong 1 den 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liet ke uoc so cua so nguyen duong n", "Liet ke uoc so cua so nguyen duong n\Liet ke uoc so cua so nguyen duong n.csproj", "{80165E42-486C-47B6-BA24-C6EA67DFB002}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tuan8_21_08", "tuan8_21_08\tuan8_21_08.csproj", "{24F1B6F4-1016-4A0E-BE8F-AE6FBFD130EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{80165E42-486C-47B6-BA24-C6EA67DFB002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80165E42-486C-47B6-BA24-C6EA67DFB002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80165E42-486C-47B6-BA24-C6EA67DFB002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F1B6F4-1016-4A0E-BE8F-AE6FBFD130EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F1B6F4-1016-4A0E-BE8F-AE6FBFD130EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F1B6F4-1016-4A0E-BE8F-AE6FBFD130EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F1B6F4-1016-4A0E-BE8F-AE6FBFD130EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

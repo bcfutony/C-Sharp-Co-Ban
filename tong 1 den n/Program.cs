@@ -10,11 +10,45 @@ namespace tong_1_den_n
     {
         static void Main(string[] args)
         {
-            Bai_110();
-            //ax2 +bx +c = 0                        
+            Bai_111();
+         
+            //Console.WriteLine(kq);
         } //dong ngoac main
 
         //CHUONG 3 CAU TRUC DIEU KHIEN
+        //Bài 111: Viết chương trình in ra tam giác cân có độ cao h
+        //Tam giác cân đặc nằm giữa màn hình
+        //Tam giác cân rỗng nằm giữa màn hình
+        //Tam giác  vuông cân đặc
+        //Tam giác vuông cân rỗng
+        public static int Bai_111()
+        {
+            int i, j, n;
+
+            Console.Write("\n");
+            Console.Write("Ve tam giac sao can trong C#:\n");
+            Console.Write("----------------------------");
+            Console.Write("\n\n");
+
+            Console.Write("Nhap so hang: ");            
+            n = int.Parse(Console.ReadLine());
+
+            for (i = 1; i <= n; i++)
+            {
+                for (j = 1; j <= n - i; j++) //chay den hang n-1 hang 1, n-2 hang 2, n-i hang i
+                {
+                    Console.Write(" ");
+                }
+                for (j = 1; j <=2*i-1 ; j++) //i =1 in 1*; i=2 in 2*; i=3  in 3*...
+                {
+                    Console.Write("*");
+                }                    
+                Console.Write("\n");
+            }
+            //Console.ReadKey();
+            return 111;
+        }
+
         //Bài 110: Cần có tổng 200000 đồng từ 3 loại giấy bạc 1000 đồng, 2000 đồng, 5000 đồng.
         //Lập chương trình để tìm ra tất cả các phương án có thể
         public static int Bai_110()
