@@ -11,13 +11,31 @@ namespace Tu_114
         static void Main(string[] args)
         {
             Bai_122();
-            PhantuMang();
+            //PhantuMang();
         }
         //CHUONG MANG 1 CHIEU
         //122.Tìm giá trị lớn nhất trong mảng một chiều các số thực
         public static int Bai_122()
         {
+            int[] arr1 = new int[10]; //khoi tao mang 10 phan tu
+            Console.Write("nhap so phan tu cua mang: ");
+            int n = int.Parse(Console.ReadLine());
 
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"nhap gia tri phan tu {i}: ");
+                arr1[i] = int.Parse(Console.ReadLine());
+            }
+            //in ra 
+            int max=0;
+            for(int i=0; i < n; i++)
+            {
+                max = arr1[0];
+                if(arr1[i] > max) { max = arr1[i]; }
+
+                
+            }
+            Console.Write($"{max}");
             return 122;
         }
         //NHAP n phan tu trong mang
