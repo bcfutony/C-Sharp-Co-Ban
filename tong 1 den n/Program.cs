@@ -23,50 +23,7 @@ namespace tong_1_den_n
         //Tam giác cân rỗng nằm giữa màn hình
         //Tam giác  vuông cân đặc
         //Tam giác vuông cân rỗng
-        public static int Bai_112()
-        {
-            int i, j, n;
-
-            Console.Write("\n");
-            Console.Write("Ve tam giac sao can trong C#:\n");
-            Console.Write("----------------------------");
-            Console.Write("\n\n");
-
-            Console.Write("Nhap so hang: ");            
-            n = int.Parse(Console.ReadLine());
-
-            for (i = 1; i <= n; i++)
-            {
-                for (j = 1; j <= n - i; j++) //chay den hang n-1 hang 1, n-2 hang 2, n-i hang i
-                {
-                    Console.Write(" ");
-                }
-                if(i != n)
-                {
-                    for (j = 1; j <= 2 * i - 1; j++) //i =1 in 1*; i=2 in 2*; i=3  in 3*...
-                    {
-
-                        if (1 < j && j < 2 * i - 1)
-                        {
-                            Console.Write(" ");
-                        }
-                        else
-                            Console.Write("*");
-                    }
-                }
-                else //dung cho hang cuoi
-                {
-                    for (j = 1; j <= 2 * i - 1; j++) //i =1 in 1*; i=2 in 2*; i=3  in 3*...
-                    {
-                            Console.Write("*");
-                    }
-                }
-                                    
-                Console.Write("\n");
-            }
-            //Console.ReadKey();
-            return 112;
-        }
+        
 
         //Bai 111 ve tam giac can dac
         public static int Bai_111()
