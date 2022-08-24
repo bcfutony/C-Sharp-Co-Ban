@@ -10,9 +10,11 @@ namespace tong_1_den_n
     {
         static void Main(string[] args)
         {
-            Bai_111();
-         
-            //Console.WriteLine(kq);
+            //go bai can chay
+            //vi du Bai_100();
+            
+            Bai_111();         
+            
         } //dong ngoac main
 
         //CHUONG 3 CAU TRUC DIEU KHIEN
