@@ -13,19 +13,60 @@ namespace tong_1_den_n
             //go bai can chay
             //vi du Bai_100();
             
-            Bai_111();         
+            Bai_112();         
             
         } //dong ngoac main
 
         //CHUONG 3 CAU TRUC DIEU KHIEN
+        //Bài 112: Viết chương trình in ra hình chữ nhật có kích thước m x n
+        //Hình chữ nhật đặc
+        //Hình chữ nhật rỗng
+        public static int Bai_112()
+        {
+            Console.Write("nhap m:");
+            int m = int.Parse(Console.ReadLine());
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            
+            //cau a hcn dac
+            for(int i = 1; i<=m; i++) //tu 1 den m hang
+            {
+                for(int j =1; j<=n; j++) //tu 1 den n cot
+                    Console.Write("*");
+                Console.Write("\n");
+            }
+            //cau b hcn rong
+            Console.Write("hcn dac day nhe:\n");
+            Console.Write("------------------");
+            Console.Write("\n");
+            for (int i = 1; i <= m; i++) //tu 1 den m hang
+            {
+                //1<i va i <m thi *   *
+                if(i>1 && i < m)
+                {
+                    Console.Write("*");
+                    for (int j = 2; j < n; j++)  //cot 2 den n-1
+                        Console.Write(" ");
+                    Console.Write("*");
+                    Console.Write("\n");
+                }
+                else
+                {
+                    for (int j = 1; j <= n; j++) //tu 1 den n cot
+                        Console.Write("*");
+                    Console.Write("\n");
+                }
+                
+            }
+            return 112;
+
+        }
+
         //Bài 111: Viết chương trình in ra tam giác cân có độ cao h
         //Tam giác cân đặc nằm giữa màn hình
         //Tam giác cân rỗng nằm giữa màn hình
         //Tam giác  vuông cân đặc
-        //Tam giác vuông cân rỗng
-        
-
-        //Bai 111 ve tam giac can dac
+        //Tam giác vuông cân rỗng        
         public static int Bai_111()
         {
             //cau a tam giac can dac

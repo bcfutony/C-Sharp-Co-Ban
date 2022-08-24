@@ -36,7 +36,6 @@ namespace tuan8_21_08
             int giaithua = 1;
             for(int i = 1; i <= n; i++)
             {
-
                 giaithua = giaithua * i;
             }
             return giaithua;
@@ -44,28 +43,16 @@ namespace tuan8_21_08
         public static int TinhTongTich(int n)
         {
             int tong = 0;
-            int tich = 1;
-            for (int i =1; i<=n; i++)
-            {
-                tich = tich * i;
-                tong = tong + tich;
-            }
+            //int tich = 1;
+            for (int i =1; i<=n; i++)            
+                tong = tong + Tinhgiaithua(i);           
             return tong;
         }
         static void Main(string[] args)
-        {
-            Hello();
-            Hello();
-            Ptbac1(2, 3);
-            Ptbac1(0, 3);
-            Ptbac1(0, 0);
+        {           
             Console.Write("nhap n:");
-            int n = int.Parse(Console.ReadLine());
-            int ketquaGT = Tinhgiaithua(n);
-            int kqTongtich = TinhTongTich(n);
-            
-            Console.WriteLine($"ket qua giai thua {ketquaGT}");
-            Console.WriteLine($" tong tich la: {kqTongtich}");
+            int n = int.Parse(Console.ReadLine()); 
+            Console.WriteLine($" tong tich la: {TinhTongTich(n)}");
         }
     }
 }
