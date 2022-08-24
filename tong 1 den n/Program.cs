@@ -23,7 +23,7 @@ namespace tong_1_den_n
         //Tam giác cân rỗng nằm giữa màn hình
         //Tam giác  vuông cân đặc
         //Tam giác vuông cân rỗng
-        public static int Bai_111()
+        public static int Bai_112()
         {
             int i, j, n;
 
@@ -41,14 +41,133 @@ namespace tong_1_den_n
                 {
                     Console.Write(" ");
                 }
-                for (j = 1; j <=2*i-1 ; j++) //i =1 in 1*; i=2 in 2*; i=3  in 3*...
+                if(i != n)
                 {
-                    Console.Write("*");
-                }                    
+                    for (j = 1; j <= 2 * i - 1; j++) //i =1 in 1*; i=2 in 2*; i=3  in 3*...
+                    {
+
+                        if (1 < j && j < 2 * i - 1)
+                        {
+                            Console.Write(" ");
+                        }
+                        else
+                            Console.Write("*");
+                    }
+                }
+                else //dung cho hang cuoi
+                {
+                    for (j = 1; j <= 2 * i - 1; j++) //i =1 in 1*; i=2 in 2*; i=3  in 3*...
+                    {
+                            Console.Write("*");
+                    }
+                }
+                                    
                 Console.Write("\n");
             }
             //Console.ReadKey();
+            return 112;
+        }
+
+        //Bai 111 ve tam giac can dac
+        public static int Bai_111()
+        {
+            //cau a tam giac can dac
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+
+            for (int i =1; i<=n; i++)
+            {
+                for (int j = 1; j <= n - i; j++)
+                    Console.Write(" ");
+                for (int j = 1; j <= 2 * i - 1; j++)
+                    Console.Write("*");
+                Console.Write("\n");
+            }
+
+            //cau b tam giac can rong            
+            Console.Write("\n");
+            Console.Write("Ve tam giac sao can trong C#:\n");
+            Console.Write("----------------------------");
+            Console.Write("\n\n");
+
+            //Console.Write("Nhap so hang: ");
+            //nb = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= n - i; j++) //chay den hang n-1 hang 1, n-2 hang 2, n-i hang i
+                {
+                    Console.Write(" ");
+                }
+                if (i != n)
+                {
+                    for (int j = 1; j <= 2 * i - 1; j++) //i =1 in 1*; i=2 in 2*; i=3  in 3*...
+                    {
+
+                        if (1 < j && j < 2 * i - 1)
+                        {
+                            Console.Write(" ");
+                        }
+                        else
+                            Console.Write("*");
+                    }
+                }
+                else //dung cho hang cuoi
+                {
+                    for (int j = 1; j <= 2 * i - 1; j++) //i =1 in 1*; i=2 in 2*; i=3  in 3*...
+                    {
+                        Console.Write("*");
+                    }
+                }
+
+                Console.Write("\n");
+            }
+            //cau c tam giac vuong can dac
+            Console.Write("\n\n");
+            Console.Write("Tam giac vuong can dac\n");
+            Console.Write("----------------------");
+            Console.Write("\n");
+            for(int i =1; i<=n; i++)
+            {
+                for(int j =1; j<=i; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.Write("\n");
+            }
+
+            //cau d tam giac vuong can rong
+            Console.Write("\n\n");
+            Console.Write("Tam giac vuong can rong\n");
+            Console.Write("----------------------");
+            Console.Write("\n");
+            for (int i = 1; i <= n; i++)
+            {
+                //i<=2 va i=n
+                if(i<=2 || i == n)
+                {
+                    for (int j = 1; j <= i; j++)
+                    {
+                        //if (i >= 3 && i <= n - i)
+                        //  Console.Write(" ");
+                        Console.Write("*");
+                    }
+                }
+                else
+                {
+                    //i>2 va i<n
+                    //x x 1trong i-2
+                    //x  x 2 trong
+                    //x   x 3 trong
+                    Console.Write("*");
+                    for (int j = 1; j <= i - 2; j++)
+                        Console.Write(" ");
+                    Console.Write("*");
+                }
+                Console.Write("\n");
+            }
             return 111;
+
         }
 
         //Bài 110: Cần có tổng 200000 đồng từ 3 loại giấy bạc 1000 đồng, 2000 đồng, 5000 đồng.
