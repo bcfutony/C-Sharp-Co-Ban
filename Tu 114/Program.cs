@@ -10,10 +10,79 @@ namespace Tu_114
     {
         static void Main(string[] args)
         {
-            Bai_122();
+            Bai_127();
             //PhantuMang();
         }
         //CHUONG MANG 1 CHIEU
+        //127.Viết hàm sắp xếp mảng một chiều các số thực tăng dần.
+        public static int Bai_127()
+        {
+            int i, j, tmp;
+            Console.Write("\nSap xep mang theo thu tu tang dan\n");
+            Console.Write("-------------------------------------");
+
+            int[] arr = new int[10];
+            Console.Write("\nnhap n:");
+            int n = int.Parse(Console.ReadLine());
+
+            //nhap gia tri mang
+            for (i = 0; i<n; i++)
+            {
+                Console.Write($"gia tri {i}:");
+                arr[i] = int.Parse(Console.ReadLine());
+
+            }
+            for (i=0; i<n; i++)
+            {
+                for (j=i+1; j<n; j++)
+                {
+                    if (arr[j] < arr[i]) //muon i nho nhat
+                    {
+                        //doi gia tri
+                        tmp = arr[j];
+                        arr[j] = arr[i];
+                        arr[i] = tmp;
+                    }
+                }
+            }
+            for(i=0; i<n; i++)
+            {
+                Console.Write($"{arr[i]}  ");
+            }
+            return 127;
+        }
+        //124.Viết hàm kiểm tra trong mảng các số nguyên có tồn tại giá trị chẵn nhỏ
+        //hơn 2004 hay không?
+
+        //123.Viết hàm tìm một vị trí mà giá trị tại vị trí đó là một giá trị nhỏ nhất 
+        //trong mảng một chiều các số nguyên.
+        public static int Bai_123()
+        {
+            int[] arr = new int[10];
+            Console.Write("nhap so phan tu mang:");
+            int n = int.Parse(Console.ReadLine());
+            int min;
+            int vitrimin;
+
+            for(int i = 0; i < n; i++)
+            {
+                //nhap cac gia tri vao mang
+                Console.Write($"nhap gia tri {i}:");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            min = arr[0];
+            vitrimin = 0;
+            for(int i = 0; i < n; i++)
+            {
+                if(arr[i] < min)
+                {
+                    min = arr[i];
+                    vitrimin = i;
+                }
+            }
+            Console.WriteLine($"vi tri min: {vitrimin}. Gia tri: {min}");
+            return 123;
+        }
         //122.Tìm giá trị lớn nhất trong mảng một chiều các số thực
         public static int Bai_122()
         {
@@ -28,14 +97,18 @@ namespace Tu_114
             }
             //in ra 
             int max=0;
+            
             for(int i=0; i < n; i++)
             {
                 max = arr1[0];
-                if(arr1[i] > max) { max = arr1[i]; }
+                if(arr1[i] > max) { 
+                    max = arr1[i]; 
+                //    vitri = i;
+                }
 
                 
             }
-            Console.Write($"{max}");
+            Console.Write($" gia tri lon nhat phan tu: {max}");
             return 122;
         }
         //NHAP n phan tu trong mang
