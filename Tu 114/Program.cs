@@ -10,11 +10,14 @@ namespace Tu_114
     {
         static void Main(string[] args)
         {
-            Bai_127();
+            //Bai_127();
+            Bai_125();
             //PhantuMang();
         }
         //CHUONG MANG 1 CHIEU
         //127.Viết hàm sắp xếp mảng một chiều các số thực tăng dần.
+
+        
         public static int Bai_127()
         {
             int i, j, tmp;
@@ -54,6 +57,69 @@ namespace Tu_114
         //124.Viết hàm kiểm tra trong mảng các số nguyên có tồn tại giá trị chẵn nhỏ
         //hơn 2004 hay không?
 
+        //125.Viết hàm đếm số lượng số nguyên tố nhỏ hơn 100 trong mảng
+        public static int Bai_125()
+        {
+            int[] arr = new int[100];
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int soNt = 0;
+            bool isSoNt = false;
+            //nhap gia tri cua mang
+            for (int i = 0;i<n; i++)
+            {
+                Console.Write($"nhap gia tri {i}:");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            //kiem tra so nguyen to va <100
+            for(int i=0; i<n; i++)
+            {
+                int giatri = arr[i];
+                for(int j =2; j<giatri; j++)
+                {
+                    if (giatri % j == 0) // ko so nguyen to
+                    {
+                        isSoNt = false;
+                        break;
+                    }
+                    else
+                        isSoNt = true;
+                }
+                if (isSoNt)
+                    soNt = soNt + 1;
+            }
+            Console.Write($"so nguyen to la {soNt}  ");
+            return 125;
+        }
+        public static int Bai_124()
+        {
+            //chan, nho hon 2004
+            int[] arr = new int[100];
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            //nhap gia tri vao mang
+            for (int i=0; i<n; i++)
+            {
+                Console.Write($"nhap phan tu thu {i}:");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            //in ra va so sanh
+            bool isTontai=false;
+            for (int i=0; i < n; i++)
+            {
+                if (arr[i] < 2004 && arr[i] % 2 == 0)
+                {
+                    Console.Write("có ton tai so nguyen chan va be hon 2004");
+                    isTontai = true;
+                    break;
+                }
+                
+            }
+            if (!isTontai)
+                Console.WriteLine("ko ton tai nhe");
+            return 124;
+
+        }
         //123.Viết hàm tìm một vị trí mà giá trị tại vị trí đó là một giá trị nhỏ nhất 
         //trong mảng một chiều các số nguyên.
         public static int Bai_123()
@@ -118,8 +184,7 @@ namespace Tu_114
             int i;
             Console.Write("nhap 10 phan tu mang \n");
             for (i = 0; i < 5; i++)
-            {
-                //Console.Write("phan tu {0}: ", i);
+            {                
                 Console.Write($"phan tu {i}:");
                 arr[i] = Convert.ToInt32(Console.ReadLine());
             }
