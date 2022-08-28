@@ -15,9 +15,8 @@ namespace Tu_114
             //PhantuMang();
         }
         //CHUONG MANG 1 CHIEU
-        //127.Viết hàm sắp xếp mảng một chiều các số thực tăng dần.
 
-        
+        //127.Viết hàm sắp xếp mảng một chiều các số thực tăng dần.
         public static int Bai_127()
         {
             int i, j, tmp;
@@ -53,10 +52,7 @@ namespace Tu_114
                 Console.Write($"{arr[i]}  ");
             }
             return 127;
-        }
-        //124.Viết hàm kiểm tra trong mảng các số nguyên có tồn tại giá trị chẵn nhỏ
-        //hơn 2004 hay không?
-
+        }        
         //125.Viết hàm đếm số lượng số nguyên tố nhỏ hơn 100 trong mảng
         public static int Bai_125()
         {
@@ -91,6 +87,8 @@ namespace Tu_114
             Console.Write($"so nguyen to la {soNt}  ");
             return 125;
         }
+        //124.Viết hàm kiểm tra trong mảng các số nguyên có tồn tại giá trị chẵn nhỏ
+        //hơn 2004 hay không?
         public static int Bai_124()
         {
             //chan, nho hon 2004
