@@ -13,11 +13,60 @@ namespace tong_1_den_n
             //go bai can chay
             //vi du Bai_100();
             
-            Bai_11();         
+           // Bai_18();
+            Bai_19();
             
         } //dong ngoac main
+        //Bài 19: Tính S(n) = 1 + x + x^3/3! + x^5/5! + … + x^(2n+1)/(2n+1)!
+        public static int Bai_19()
+        {
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            Console.Write("nhap x:");
+            double x = double.Parse(Console.ReadLine());
+            double S = 1+x;
+            for(double i =1; i<=n; i++)
+            {
+                S = S + Math.Pow(x, 2 * i + 1) / TinhGiaiThua(2 * i + 1);
+            }
+            Console.Write($"bai 19: {S}");
+            return 19;
+        }
+        //hay Bài 18: Tính S(n) = 1 + x^2/2! + x^4/4! + … + x^2n/(2n)!
+        public static int Bai_18()
+        {
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            Console.Write("nhap x:");
+            double x = double.Parse(Console.ReadLine());
+            double S = 1;
+            for (double i = 1; i <=n; i++)
+            {
+                S = S + Math.Pow(x, 2.0 * i) / TinhGiaiThua(2 * i);
+            }
+            Console.Write($"bai_18: {S} \n");
+            return 18;
+        }
+        //Bài 15: Tính S(n) = 1 + 1/1 + 2 + 1/ 1 + 2 + 3 + ….. + 1/ 1 + 2 + 3 + …. + N
+        public static int Bai_15()
+        {
+            //tinh tong 1+2+3..+N
+            //S=S+1/tong
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int tong = 0;
+            double S = 0;
+            for(int i = 1; i<=n ; i++)
+            {
+                //ting tong 1 den n
+                tong = tong + i;
+                S = S + 1.0 / tong;
+            }
+            Console.WriteLine($"cac tong bai 15 la: {S}");
+            return 15;
+        }
         //Bài 11: Tính S(n) = 1 + 1.2 + 1.2.3 + … + 1.2.3….N
-        public static int TinhGiaiThua(int n)
+        public static int TinhGiaiThua(double n)
         {
             int gt = 1;
             for(int i =1; i<=n; i++)
