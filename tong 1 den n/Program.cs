@@ -13,10 +13,46 @@ namespace tong_1_den_n
             //go bai can chay
             //vi du Bai_100();
             
-            Bai_112();         
+            Bai_11();         
             
         } //dong ngoac main
+        //Bài 11: Tính S(n) = 1 + 1.2 + 1.2.3 + … + 1.2.3….N
+        public static int TinhGiaiThua(int n)
+        {
+            int gt = 1;
+            for(int i =1; i<=n; i++)
+            {
+                gt = gt * i;
+            }
+            return gt;
+        }
+        public static int Bai_11()
+        {
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int s = 0;
+            for(int i =1; i<=n; i++)
+            {
+                s = s + TinhGiaiThua(i);
+            }
+            Console.Write($"tong tich la: {s} \n");
+            return 11;
 
+        }
+        //Bài 5: Tính S(n) = 1 + 1/3 + 1/5 + … + 1/(2n + 1)
+        public static int Bai_5()
+        {
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            double s = 0;
+            for(int i =0; i < n; i++)
+            {
+                s = s + 1 / (2.0 * i + 1);
+            }
+            Console.WriteLine($"tong la: {s}");
+
+            return 5;
+        }
         //CHUONG 3 CAU TRUC DIEU KHIEN
         //Bài 112: Viết chương trình in ra hình chữ nhật có kích thước m x n
         //Hình chữ nhật đặc
