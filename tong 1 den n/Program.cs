@@ -13,10 +13,99 @@ namespace tong_1_den_n
             //go bai can chay
             //vi du Bai_100();
             
-           // Bai_18();
-            Bai_19();
-            
+
+            //Bai_31_KTSoNT(n);
+            if (Bai_31_KTSoNT())
+                Console.WriteLine($"là nguyen to");
+            else
+                Console.WriteLine($"ko la Nt ");
         } //dong ngoac main
+
+        //Bai 31 kiem tra so nguyen to
+        public static bool Bai_31_KTSoNT()
+        {
+            //Bài 31: Cho số nguyên dương n.
+            //Kiểm tra xem n có phải là số nguyên tố hay không        
+            //Một số tự nhiên (1, 2, 3, 4, 5, 6,...) được gọi là số nguyên tố nếu nó lớn hơn 1 và không thể được biểu diễn thành tích của hai số tự nhiên nhỏ hơn khác 1    
+            Console.WriteLine("nhap n:");
+            int n = int.Parse(Console.ReadLine());          
+            //neu n<3 n 1, 2
+            if (n <= 1) // hoac <2
+            {
+                //Console.WriteLine($"so {n} KHONG la so nguyento");
+                return false;
+            }
+            else
+            {
+                for (int i = 2; i <= n/2; i++)
+                {
+                    if (n % i == 0)
+                        return false;                                 
+                }
+                return true;
+            }
+            //return 31;
+        }
+        
+        //Bài 24: Liệt kê tất cả các “ước số lẻ” của số nguyên dương n
+        //Bài 25: Tính tổng tất cả các “ước số chẵn” của số nguyên dương n
+        //Bài 26: Tính tích tất cả các “ước số lẻ” của số nguyên dương n
+        //Bài 27: Đếm số lượng “ước số chẵn” của số nguyên dương n
+        public static int Bai_24()
+        {
+            Console.Write("nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int tongUSC = 0;
+            int tichUSL = 1;
+            for(int i =1;i<=n; i++)
+            {
+                if(n%i==0 && i % 2 != 0)
+                {
+                    tichUSL = tichUSL * i;
+                    Console.Write($"Bai_24 cac uoc le cua {n} la {i} \n");
+                    
+                }
+               // Console.WriteLine();
+                if (n%i ==0 && i%2 == 0)
+                {
+                    tongUSC = tongUSC + i;
+                    Console.Write($"Bai_25 cac uoc chan cua {n} la {i} \n");
+                }
+            }
+            Console.WriteLine();
+            Console.Write($"bai_25 tong usc cua {n} la {tongUSC}\n");
+            Console.Write($"bai_26 tich usl cua {n} la {tichUSL}\n");
+            return 24;
+        }
+
+        //Bài 20: Liệt kê tất cả các “ước số” của số nguyên dương n
+        //Bài 21: Tính tổng tất cả các “ ước số” của số nguyên dương n
+        //Bài 22:Tính tích tất cả các “ước số” của số nguyên dương n
+        //Bài 23: Đếm số lượng “ước số” của số nguyên dương n
+        public static int Bai_20()
+        {
+            //n%i==0 thi i uoc so
+            Console.Write("\n nhap n:");
+            int n = int.Parse(Console.ReadLine());
+            int tongUocSo = 0;
+            int tichUocSo = 1;
+            int soluongUocSo = 0;
+            for (int i = 1; i<=n; i++)
+            {
+                if (n % i == 0)
+                {
+                    Console.Write($"cac uoc so cua {n} Bai_20: {i}\n");
+                    tongUocSo=tongUocSo+i; //tong++=i
+                    tichUocSo = tichUocSo * i;
+                    soluongUocSo = soluongUocSo + 1;
+                    //soluongUocSo++ = 1;
+                }
+            }
+            Console.Write($"tong uoc so Bai_21: {tongUocSo}\n");
+            Console.Write($"tich uoc so Bai_22: {tichUocSo}\n");
+            Console.Write($"SL uoc so Bai_23: {soluongUocSo}\n");
+            return 20;
+        }
         //Bài 19: Tính S(n) = 1 + x + x^3/3! + x^5/5! + … + x^(2n+1)/(2n+1)!
         public static int Bai_19()
         {
