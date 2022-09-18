@@ -10,11 +10,10 @@ namespace Tu_114
     {
         static void Main(string[] args)
         {
-            //Bai_138();
-            int kq = Bai_147();
-            Console.WriteLine(kq);
-            //Bai 122
-            //Bài 125: Viết hàm đếm số lượng số nguyên tố nhỏ hơn 100 trong mảng
+            Bai_127();
+            //double kq = Bai_142();
+            //Console.WriteLine(kq);
+            
 
         }
         //Bài 147: Tìm số dương cuối cùng trong mảng số thực.
@@ -142,50 +141,19 @@ namespace Tu_114
             return min;
            
             
-            //Bai 122
-            //Bài 125: Viết hàm đếm số lượng số nguyên tố nhỏ hơn 100 trong mảng
-
-            ////nhap gia tri cua mang            
-            //int[] arr = Xulymang.NhapMang();
-            //int soNt = 0;                                    
-            ////kiem tra so nguyen to va <100
-            //for (int i = 0; i < arr.Length; i++)
-            //{
-            //    int giatri = arr[i];                
-            //    //soNt = soNt + ((giatri < 100 && Bai_31_KTSoNT(giatri)) ? 1 : 0);
-            //    if (giatri < 100 && Bai_31_KTSoNT(giatri))
-            //    {
-            //        soNt = soNt + 1;
-            //        Console.WriteLine($"so nguyen to la: {giatri}, sothu: {soNt}");
-            //    }
-            //}
-            //Console.WriteLine($"Dem so nguyen to <100 la {soNt}  ");
             
-            ////xuat mang
-            //Xulymang.XuatMang(arr);
-          
         }
-        //CHUONG MANG 1 CHIEU
-
+        
         //127.Viết hàm sắp xếp mảng một chiều các số thực tăng dần.
+        //dang lam cho so nguyen
         public static int Bai_127()
         {
             int i, j, tmp;
             Console.Write("\nSap xep mang theo thu tu tang dan\n");
-            Console.Write("-------------------------------------");
+            Console.Write("-----------------------------------\n");
 
-            int[] arr = new int[10];
-            Console.Write("\nnhap n:");
-            int n = int.Parse(Console.ReadLine());
-
-            //nhap gia tri mang
-            for (i = 0; i<n; i++)
-            {
-                Console.Write($"gia tri {i}:");
-                arr[i] = int.Parse(Console.ReadLine());
-
-            }
-            for (i=0; i<n; i++)
+            int[] arr = NhapMang();
+            for (i=0; i<arr.Length; i++)
             {
                 for (j=i+1; j<arr.Length; j++)
                 {
@@ -198,11 +166,7 @@ namespace Tu_114
                     }
                 }
             }
-            XuatMang(arr);
-            //for(i=0; i<arr.Length; i++)
-            //{
-            //    Console.Write($"{arr[i]}  ");
-            //}
+            XuatMang(arr);            
             return 127;
         }
         
@@ -346,7 +310,7 @@ namespace Tu_114
             for (int i = 0; i < n; i++)
             {
                 Console.Write($"nhap gia tria a[{i}]: ");
-                arr[i] = Convert.ToInt32(Console.ReadLine());
+                arr[i] = double.Parse(Console.ReadLine());
             }
             return arr;
         }
@@ -354,7 +318,7 @@ namespace Tu_114
         {
             for (int i=0; i<a.Length; i++)
             {
-                Console.WriteLine($"{a[i]}");
+                Console.Write($"{a[i]} ");
             }
             
         }
