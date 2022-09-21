@@ -10,12 +10,89 @@ namespace Tu_114
     {
         static void Main(string[] args)
         {
-            Bai_127();
-            //double kq = Bai_142();
-            //Console.WriteLine(kq);
+            //Bai_127();
+            double kq = Bai_156();
+            Console.WriteLine(kq);
             
 
         }
+        //Bài 169 (*): Cho mảng 1 chiều các số nguyên.
+        //Hãy viết hàm tìm số chẵn nhỏ nhất lớn hơn mọi giá trị có trong mảng
+       
+        //da toi 160
+        //Bài 160: Cho mảng 1 chiều các số thực, hãy tìm giá trị âm cuối cùng lớn hơn giá trị -1.
+        //Nếu mảng không có giá trị thỏa điều kiện trên thì trả về -1
+
+
+        //Bài 157: Cho mảng 1 chiều các số thực,
+        //hãy tìm đoạn [a, b] sao cho đoạn này chứa tất cả các giá trị trong mảng
+        //tim min max
+
+
+        //phan luyen tu duy
+        //Bài 156: Hãy tìm giá trị trong mảng các số thực gan giá trị x nhất
+        //vd: 24    45    23. X=15
+        //    24-15 45-15 23-15
+        //     9     30     8
+        //gia tri xa nhat: 45
+        //https://github.com/thantrieu/CSharp/blob/master/Ex4/Bai5.cs
+        public static double Bai_156()
+        {
+            double[] a = NhapMangThuc();
+            Console.WriteLine($"nhap x: ");
+            double x = double.Parse(Console.ReadLine());
+            double min = Math.Abs(x - a[0]);
+            double giatrimin = a[0];
+            for (int i=0; i<a.Length; i++)
+            {
+                double tmp = Math.Abs(x - a[i]);
+                if(tmp < min)
+                {
+                    min = tmp;
+                    giatrimin = a[i];
+                }
+            }
+            return giatrimin;
+        }
+
+        //Bài 150: Hãy tìm giá trị âm lớn nhất trong mảng 1 chiều các số thực.
+        //Nếu mảng không có giá trị âm thì trả về  -1
+        public static double Bai_150()
+        {
+            double[] a = NhapMangThuc();
+            double minAm;
+            if (AmLonNhat(a)==0)
+            {
+                Console.WriteLine("ko co gia tri am");
+                return -1;
+            }
+            else
+            {
+                minAm = AmLonNhat(a);
+                for (int i = a.Length - 1; i >= 0; i--)
+                {
+                    if (a[i] < minAm)
+                    {
+                        minAm = a[i];
+                    }
+                }
+            }
+            return minAm;
+            
+        }
+        public static double AmLonNhat(double[] a)
+        {
+            for(int i=a.Length-1; i>=0; i--)
+            {
+                if (a[i] < 0)
+                {
+                    return a[i];
+                }
+                
+            }
+            return 0;
+        }
+
         //Bài 147: Tìm số dương cuối cùng trong mảng số thực.
         //Nếu mảng không có giá trị dương thì trả về  -1
         public static int Bai_147()
@@ -173,17 +250,7 @@ namespace Tu_114
         //Bài 126: Viết hàm tính tổng các giá trị âm trong mảng 1 chiều các số thực
         public static void Bai_126()
         {
-           // Console.Write("nhap so pt: ");
-           // int n = int.Parse(Console.ReadLine());
-           //// int[] arr = new int[n];
-           // double[] arr1 = new double[n];
-           // //nhap gia tri mang
-           // for(int i=0; i<n; i++)
-           // {
-           //     Console.Write($"nhap gia tri a[{i}]: ");
-           //     arr1[i] = double.Parse(Console.ReadLine());
-           // }
-
+           
             double[] arr1 = NhapMangThuc();
             //xuat mang
             double tongAm = 0;
@@ -198,7 +265,7 @@ namespace Tu_114
 
         }
         //125.Viết hàm đếm số lượng số nguyên tố nhỏ hơn 100 trong mảng        
-       
+        
 
 
         //124.Viết hàm kiểm tra trong mảng các số nguyên có tồn tại giá trị chẵn nhỏ
