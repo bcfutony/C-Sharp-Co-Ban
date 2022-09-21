@@ -10,11 +10,372 @@ namespace Tu_114
     {
         static void Main(string[] args)
         {
-            Bai_127();
-            //double kq = Bai_142();
+            //Bai_127new();
+            //int kq = Bai_138();
             //Console.WriteLine(kq);
-            
+            //Bai_151();
 
+            //int[] a = NhapMang();
+            //int kq = Bai_170(a);
+            //Console.WriteLine($"ket qua: {kq}");
+            //XuatMang(a);
+
+           
+            int[] a = NhapMang();
+            int kq = Bai_151(a);
+            Console.WriteLine($"kq la: {kq}");
+
+
+        }
+        //24.09.22 
+        //Bài 170: Cho mảng 1 chiều các số nguyên.
+        //Hãy viết hàm tìm số nguyên tố nhỏ nhất lớn hơn mọi giá trị có trong mảng
+        public static int Bai_170(int[] arr)
+        {
+            //tim max 
+            int max = arr[0];
+            for (int i=0; i<arr.Length; i++)
+            {
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
+            }
+            for (int i =max+1; KTSoNT(arr[i])==true; i++)
+            {
+
+            }
+            return -1;
+        }
+        public static int TimMinDuong(int[] a)
+        {
+            int minIndex = -1;
+            //tim phan tu duong du tien, goi gan cho minindex
+            for (int i=0; i<a.Length; i++)
+            {
+                if (a[i] > 0)
+                {
+                    minIndex = i;
+                    break;
+                }
+            }
+            if(minIndex >= 0) //neu co so duong
+            {
+                for (int i = minIndex + 1; i < a.Length; i++)
+                {
+                    if (a[i] > 0 && a[i] < a[minIndex])
+                    {
+                        minIndex = i;
+                    }
+                }
+            }
+            return minIndex;
+               
+        }
+        //Bài 153: Hãy tìm giá trị chẵn nhỏ nhất trong mảng 1 chiều các số nguyên.
+        //Nếu mảng không có số chẵn thì trả về -1
+        //bai nay dung bai 143
+        public static int Bai_153_C2(int[] a)
+        {
+            int minChan = -1; //gia su ko co so chan nao ca
+            //tim chan dau tien
+            for (int i=0; i<a.Length; i++)
+            {
+                if (a[i] % 2 == 0)
+                {
+                    minChan = a[i];
+                    break; //thoat khoi vong for
+                }
+            }
+            //tim chan nho nhat
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i]%2==0 && a[i] < minChan)
+                {
+                    minChan = a[i];//cap nhat min chan moi
+                }
+            }
+            return minChan;
+        }
+        public static int Bai_153(int[] a)
+        {
+            int minChan = Bai_143_Chandautien(a); //lay chan dau tien lam min
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] % 2 == 0 && a[i] < minChan)
+                {
+                    minChan = a[i]; //gan minChan moi
+                }
+            }
+            return minChan;
+        }
+        //Bài 143: Viết hàm tìm số chẵn đầu tiên trong mảng các số nguyên.
+        //Nếu mảng không có giá trị chẵn thì trả về  -1
+        public static int Bai_143_Chandautien(int[] a)
+        {
+           // int chandautien = -1;
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] % 2 == 0)
+                {
+                    return a[i];
+                }
+            }
+            return -1;
+        }
+        //bai 142: Tìm giá trị nhỏ nhất trong mảng 1 chiều số thực
+        public static double Bai_142_TimMinThuc(double[] a)
+        {
+            double min = a[0];
+            for (int i=0; i<a.Length; i++)
+            {
+                if (a[i] < min)
+                {
+                    min = a[i]; //gan gia tri min moi
+                }
+            }
+            return min;
+        }
+        //tim min nguyen
+        public static int Bai_142_TimMin(int[] a)
+        {
+            int min = a[0];
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] < min)
+                {
+                    min = a[i]; //gan gia tri min moi
+                }
+            }
+            return min;
+        }
+        public static int Bai_142_TimMinIndex(int[] a)
+        {
+            int minIndex = 0;
+            for (int i=0; i<a.Length; i++)
+            {
+                if (a[i] < a[minIndex])
+                {
+                    minIndex = i;
+                }
+            }
+            return minIndex;
+        }
+        //Bài 140: Hãy tìm giá trị dương nhỏ nhất trong mảng 1 chiều các số thực.
+        //Nếu mảng không có giá trị dương thì sẽ trả về -1
+        public static double Bai_140()
+        {
+            double[] arr = NhapMangThuc();
+            double minDuong= KTgiatriduong(arr);
+            if (minDuong > 0)
+            {
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (arr[i] < minDuong && arr[i]>0)
+                    {
+                        //minDuong = arr[i]; //gia tri
+                        minDuong = i; //vi tri
+                    }
+                }
+                return minDuong;
+            }
+            return -1;
+            
+            
+        }
+        public static double KTgiatriduong(double[] a)
+        {
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] > 0)
+                    return a[i];
+            }
+            return -1;
+        }
+        //Bài 138: Tìm vị trí của giá trị chẵn đầu tiên trong mảng 1 chiều các số nguyên.
+        //Nếu mảng không có giá trị chẵn thì sẽ trả về -1
+        public static int Bai_138()
+        {
+            Console.Write($"vui long nhap so pt: ");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            //nhap gia tri mang
+            for (int i =0; i<a.Length; i++)
+            {
+                Console.Write($"nhap gia tri a[{i}]: ");
+                a[i] = int.Parse(Console.ReadLine());
+            }
+
+            //chan dau tien. ko -1
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] % 2 == 0)
+                {
+                    return a[i];
+                }
+            }
+            return -1;
+        }
+        
+        //Bài 137: Tìm 1 vị trí mà giá trị tại vị trí đó là
+        //giá trị nhỏ nhất trong mảng 1 chiều các số thực
+        public static double Bai_137_new()
+        {
+            double[] a = NhapMangThuc();
+            double min = a[0];
+            for (int i =0; i < a.Length; i++)
+            {
+                if (a[i] < min)
+                {
+                    min = a[i];
+                }
+            }
+            return min;
+        }
+
+
+        //Bài 169 (*): Cho mảng 1 chiều các số nguyên.
+        //Hãy viết hàm tìm số chẵn nhỏ nhất lớn hơn mọi giá trị có trong mảng
+
+        //da toi 160
+        //Bài 160: Cho mảng 1 chiều các số thực, hãy tìm giá trị âm cuối cùng lớn hơn giá trị -1.
+        //Nếu mảng không có giá trị thỏa điều kiện trên thì trả về -1
+
+
+        //Bài 157: Cho mảng 1 chiều các số thực,
+        //hãy tìm đoạn [a, b] sao cho đoạn này chứa tất cả các giá trị trong mảng
+        //tim min max
+
+
+        //phan luyen tu duy
+        //Bài 156: Hãy tìm giá trị trong mảng các số thực gan giá trị x nhất
+        //vd: 24    45    23. X=15
+        //    24-15 45-15 23-15
+        //     9     30     8
+        //gia tri xa nhat: 45
+        //https://github.com/thantrieu/CSharp/blob/master/Ex4/Bai5.cs
+        public static double Bai_156()
+        {
+            double[] a = NhapMangThuc();
+            Console.WriteLine($"nhap x: ");
+            double x = double.Parse(Console.ReadLine());
+            double min = Math.Abs(x - a[0]);
+            double giatrimin = a[0];
+            for (int i=0; i<a.Length; i++)
+            {
+                double tmp = Math.Abs(x - a[i]);
+                if(tmp < min)
+                {
+                    min = tmp;
+                    giatrimin = a[i];
+                }
+            }
+            return giatrimin;
+        }
+
+
+
+
+
+        //155
+        public static int Bai_155(int[] a, int x)
+        {
+            //tim xa nhat
+            int maxIndex = 0;
+            for(int i=0; i<a.Length; i++)
+            {
+                if (Math.Abs(a[i] - x) > Math.Abs(a[maxIndex] - x))
+                {
+                    maxIndex = i;
+                }
+            }
+            return maxIndex;
+        }
+
+        //kiem tra chinh phuong
+        public static bool KTchinhphuong(int n)
+        {
+            int a = (int)Math.Sqrt(n); //n=20 =>4; 
+            return a * a == n;
+        }
+
+
+
+
+
+
+
+        //Bài 151: Hãy tìm số nguyên tố lớn nhất trong mảng 1 chiều các số nguyên.
+        //Nếu mảng không có số nguyên tố thì trả về -1
+        public static int Bai_151(int[] a)
+        {
+            int soNTMax = -1; //gia su ko co so nguyen to
+            
+            for(int i =0; i<a.Length; i++)
+            {
+                if (KTSoNT(a[i]))
+                {
+                    if (a[i] > soNTMax)
+                    {
+                        soNTMax = a[i]; //gan lai max nguyen to
+                    }
+                }
+            }
+            return soNTMax;
+            
+        }
+        
+        //Bài 150: Hãy tìm giá trị âm nhỏ nhất trong mảng 1 chiều các số thực.
+        //Nếu mảng không có giá trị âm thì trả về  -1
+        public static double Bai_150(double[] a)
+        {
+            //double[] a = NhapMangThuc();
+            double minAm=-1; //gia su mang ko co gia tri am
+            if (AmLonNhat(a)==0)
+            {
+                Console.WriteLine("ko co gia tri am");
+                return -1;
+            }
+            else
+            {
+                minAm = AmLonNhat(a);
+                for (int i = a.Length - 1; i >= 0; i--)
+                {
+                    if (a[i] < minAm)
+                    {
+                        minAm = a[i];
+                    }
+                }
+            }
+            return minAm;
+            
+        }
+        public static double AmLonNhat(double[] a)
+        {
+            for(int i=a.Length-1; i>=0; i--)
+            {
+                if (a[i] < 0)
+                {
+                    return a[i];
+                }
+                
+            }
+            return 0;
+        }
+        //Bài 148: Tìm số nguyên tố cuối cùng trong mảng 1 chiều các số nguyên.
+        //Nếu mảng không có số nguyên tố thì trả về  -1
+        public static int Bai_148(int[] a)
+        {
+            int soNT = -1; //gia dinh ko co so nguyento
+            for(int i = a.Length-1; i>=0; i--)
+            {
+                if (KTSoNT(a[i]))
+                {
+                    soNT = a[i];
+                    return soNT;
+                }
+            }
+            return soNT;
         }
         //Bài 147: Tìm số dương cuối cùng trong mảng số thực.
         //Nếu mảng không có giá trị dương thì trả về  -1
@@ -30,9 +391,9 @@ namespace Tu_114
         }
         //Bài 146: Tìm giá trị âm đầu tiên trong mảng 1 chiều các số thực.
         //Nếu mảng không có giá trị âm thì trả về -1
-        public static int Bai_146()
+        public static int Bai_146(int[] arr)
         {
-            int[] arr = NhapMang();
+            //int[] arr = NhapMang();
             for (int i=0; i<arr.Length; i++)
             {
                 if (arr[i] < 0)
@@ -96,6 +457,7 @@ namespace Tu_114
                 return false;
             else
             {
+                //luu y i tu 2 -------********----------
                 for(int i = 2; i<=n/2; i++)
                 {
                     if(n%i==0)
@@ -173,17 +535,7 @@ namespace Tu_114
         //Bài 126: Viết hàm tính tổng các giá trị âm trong mảng 1 chiều các số thực
         public static void Bai_126()
         {
-           // Console.Write("nhap so pt: ");
-           // int n = int.Parse(Console.ReadLine());
-           //// int[] arr = new int[n];
-           // double[] arr1 = new double[n];
-           // //nhap gia tri mang
-           // for(int i=0; i<n; i++)
-           // {
-           //     Console.Write($"nhap gia tri a[{i}]: ");
-           //     arr1[i] = double.Parse(Console.ReadLine());
-           // }
-
+           
             double[] arr1 = NhapMangThuc();
             //xuat mang
             double tongAm = 0;
@@ -198,7 +550,7 @@ namespace Tu_114
 
         }
         //125.Viết hàm đếm số lượng số nguyên tố nhỏ hơn 100 trong mảng        
-       
+        
 
 
         //124.Viết hàm kiểm tra trong mảng các số nguyên có tồn tại giá trị chẵn nhỏ
