@@ -15,15 +15,15 @@ namespace Tu_114
             //Console.WriteLine(kq);
             //Bai_151();
 
-            //int[] a = NhapMang();
-            //int kq = Bai_169(a);
-            //Console.WriteLine($"ket qua: {kq}");
-            //XuatMang(a);
+            int[] a = NhapMang();
+            int kq = Bai_169(a);
+            Console.WriteLine($"ket qua: {kq}");
+            XuatMang(a);
 
 
-            double[] a = NhapMangThuc();
-            double kq = Bai_212(a);
-            Console.WriteLine($"kq la: {kq}");
+            //double[] a = NhapMangThuc();
+            //double kq = Bai_212(a);
+            //Console.WriteLine($"kq la: {kq}");
 
         }
         public static int TestGit()
