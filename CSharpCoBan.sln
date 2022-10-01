@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tu 114", "Tu 114\Tu 114.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuan9 27.08.22", "Tuan9 27.08.22\Tuan9 27.08.22.csproj", "{DAAC5399-8BC7-453D-A41D-AE3B7C141EB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matran", "Matran\Matran.csproj", "{B22D8D3D-9E8B-4C71-AEAC-82C726D52F04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{DAAC5399-8BC7-453D-A41D-AE3B7C141EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAAC5399-8BC7-453D-A41D-AE3B7C141EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAAC5399-8BC7-453D-A41D-AE3B7C141EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B22D8D3D-9E8B-4C71-AEAC-82C726D52F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B22D8D3D-9E8B-4C71-AEAC-82C726D52F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B22D8D3D-9E8B-4C71-AEAC-82C726D52F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B22D8D3D-9E8B-4C71-AEAC-82C726D52F04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

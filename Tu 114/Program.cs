@@ -16,16 +16,63 @@ namespace Tu_114
             //Bai_151();
 
             //int[] a = NhapMang();
-            //int kq = Bai_170(a);
+            //int kq = Bai_169(a);
             //Console.WriteLine($"ket qua: {kq}");
             //XuatMang(a);
 
-           
-            int[] a = NhapMang();
-            int kq = Bai_151(a);
+
+            double[] a = NhapMangThuc();
+            double kq = Bai_212(a);
             Console.WriteLine($"kq la: {kq}");
 
-
+        }
+        //Bài 212: Tính trung bình cộng các số dương trong mảng 1 chiều các số thực
+        public static double Bai_212(double[] a)
+        {
+            //tong = tong + a[i]
+            //dem = dem + 1
+            double tong = 0;
+            double dem = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] > 0)
+                {
+                    tong = tong + a[i];
+                    dem = dem + 1; 
+                }
+            }
+            return tong * 1.0 / dem;
+        }
+        //Bài 211: Tính trung bình cộng các số nguyên tố trong mảng 1 chiều các số nguyên
+        public static double Bai_211(int[] a)
+        {
+            //kiem tra so nguyen to
+            //tong = tong + a[i]
+            //dem = dem + 1
+            int tong = 0;
+            int dem = 0;
+            for(int i = 0; i<a.Length; i++)
+            {
+                if (KTSoNT(a[i]))
+                {
+                    tong = tong + a[i];
+                    dem = dem + 1;
+                }
+            }
+            return tong*1.0 / dem;
+        }
+        //Các bài tập tìm kiếm và liệt kê
+        //Bài 176: Hãy liệt kê các số âm trong mảng 1 chiều các số thực
+        public static double Bai_176(double[] a)
+        {
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] < 0)
+                {
+                    Console.Write($"{a[i]}, ");
+                }
+            }
+            return 0;
         }
         //24.09.22 
         //Bài 170: Cho mảng 1 chiều các số nguyên.
@@ -41,11 +88,38 @@ namespace Tu_114
                     max = arr[i];
                 }
             }
-            for (int i =max+1; KTSoNT(arr[i])==true; i++)
+            int socantim = max + 1;
+            for (socantim = max +1; ; socantim++)
             {
-
+                if (KTSoNT(socantim))
+                {
+                    //return socantim;
+                    break;
+                }
             }
-            return -1;
+            return socantim;
+        }
+        //Bài 169 (*): Cho mảng 1 chiều các số nguyên.
+        //Hãy viết hàm tìm số chẵn nhỏ nhất lớn hơn mọi giá trị có trong mảng
+        public static int Bai_169(int[] a)
+        {
+            //tim max
+            int max = a[0];
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] > max)
+                {
+                    max=a[i];
+                }
+            }
+            int socantim = max + 1;
+            if (socantim % 2 != 0) //neu le thi cong 1, chan thi ko doi
+            {
+                //break;
+                socantim = socantim + 1;
+            }
+           
+            return socantim;
         }
         public static int TimMinDuong(int[] a)
         {
@@ -72,6 +146,31 @@ namespace Tu_114
             return minIndex;
                
         }
+        //Bài 154: Hãy tìm vị trí giá trị âm nhỏ nhất trong mảng các số thực.
+        //Nếu mảng không có số âm thì trả về -1
+        public static double Bai_154(double[] a)
+        {
+            double AmMin = -1; //gia su ko co gt am
+            //tim am dau tien
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] < 0)
+                {
+                    AmMin = a[i];
+                    break; //thoat vong for
+                }
+            }
+            //tim am nho nhat
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] < AmMin)
+                {
+                    AmMin = a[i]; //gan lai am min nhat
+                }
+            }
+            return AmMin;
+        }
+
         //Bài 153: Hãy tìm giá trị chẵn nhỏ nhất trong mảng 1 chiều các số nguyên.
         //Nếu mảng không có số chẵn thì trả về -1
         //bai nay dung bai 143
@@ -234,9 +333,29 @@ namespace Tu_114
         }
 
 
-        //Bài 169 (*): Cho mảng 1 chiều các số nguyên.
-        //Hãy viết hàm tìm số chẵn nhỏ nhất lớn hơn mọi giá trị có trong mảng
 
+        //Bài 163: Tìm số chính phương đầu tiên trong mảng 1 chiều các số nguyên
+        public static int Bai_163(int[] a)
+        {
+            int soCP = -1; //gia su ko co so chinh phuong
+            for(int i =0; i < a.Length; i++)
+            {
+                if (KTSoChinhPhuong2(a[i]))
+                {
+                    return a[i];
+                }
+            }
+            return soCP;
+        }
+        public static bool KTSoChinhPhuong2(int n)
+        {
+            //int a = (int)Math.Sqrt(n); //n=20 =>4; 
+            int a = Convert.ToInt32(Math.Sqrt(n));
+            return a * a == n;
+            //int a = int.Parse(Math.Sqrt(a));
+            //--***---: int.Parse chi chuyen chuoi sang so
+            
+        }
         //da toi 160
         //Bài 160: Cho mảng 1 chiều các số thực, hãy tìm giá trị âm cuối cùng lớn hơn giá trị -1.
         //Nếu mảng không có giá trị thỏa điều kiện trên thì trả về -1
@@ -273,11 +392,27 @@ namespace Tu_114
             return giatrimin;
         }
 
+        public static double Bai_156_C2(double[] a, double x)
+        {
+            //tim gia tri gan x nhat
+            int minIndex = 0;
+            for(int i=0; i<a.Length; i++)
+            {
+                //tim khoang cach nho nhat
+                if (Math.Abs(a[i]-x) < Math.Abs(a[minIndex] - x))
+                {
+                    minIndex = i; //gan vi tri gan nhat moi
+
+                }
+            }
+            return a[minIndex];
+
+        }
 
 
 
-
-        //155
+        
+        //155: Hãy tìm giá trị trong mảng các số thực xa giá trị x nhất
         public static int Bai_155(int[] a, int x)
         {
             //tim xa nhat
