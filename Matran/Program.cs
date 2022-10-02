@@ -11,21 +11,22 @@ namespace Matran
         static void Main(string[] args)
         {
             //kieu nguyen
-            //int[,] a;
-            //a = NhapMaTran();            
-            //double kq = Bai_318(a);                        
-            //XuatMaTran(a);
-            //Console.WriteLine($"{kq}");
+            int[,] a;
+            a = NhapMaTran();
+            double kq = Bai_323(a);
+            XuatMaTran(a);
+            Console.WriteLine($"{kq}");
 
             //kieu thuc
-            double[,] at;
-            at = NhapMaTranTHUC();
-            double kqt = Bai_326(at);
-            XuatMaTranTHUC(at);
-            Console.WriteLine($"{kqt}");
+            //    double[,] at;
+            //    at = NhapMaTranTHUC();
+            //    double kqt = Bai_320(at);
+            //    XuatMaTranTHUC(at);
+            //    Console.WriteLine($"{kqt}");
+
         }
 
-        //327 tong bien
+         //327 tong bien
         public static int Bai_327(int[,] a)
         {
             int s = 0; //so luong so nguyen to
@@ -40,7 +41,7 @@ namespace Matran
                 
             }
             //tong bien cot
-            for (int i = 1; i < a.GetLength(0)-1; i++)
+            for (int i = 1; i < a.GetLength(0)-1; i++) //bo cot o hang cuoi cung nen -1
             {
                 s = s + a[i, 0];
                 if (a.GetLength(1) >= 2) //neu cot lon hon 2
@@ -66,6 +67,85 @@ namespace Matran
             }
             return tong / dem;
         }
+
+
+
+
+        //Bài 323: Tính tích các giá trị dương trên 1 cột trong ma trận các số thực
+        public static int Bai_323(int[,] a)
+        {
+            //LUU y so cot >=0 va <a.GetLength(1)
+            Console.Write($"nhap so COT can tinh:");
+            int n = int.Parse(Console.ReadLine());
+            int tongCOT = 0;
+            int tichCOT = 1;
+
+            if (n>=0 && n < a.GetLength(1))
+            {            
+                for (int i = 0; i < a.GetLength(0); i++)
+                {
+                    tongCOT += a[i, n];
+                    if (a[i,n]>0)
+                        tichCOT = tichCOT * a[i,n]; //*=
+                }
+            }
+            else
+            {
+                Console.WriteLine("so cot ko hop le");
+                return -1;
+            }
+           
+            return tichCOT;
+
+        }
+        //Bài 322: Tính tổng các giá trị trên 1 dòng trong ma trận các số thực// nguyen
+        public static int Bai_322(int[,] a)
+        {
+            Console.Write($" nhap so dong can tin:");
+            int n = int.Parse(Console.ReadLine());
+            int tongdong = 0;
+            
+            for (int j=0; j<a.GetLength(1); j++)
+            {
+                tongdong += a[n, j];
+            }
+            return tongdong;
+            
+        }
+
+        //Bài 321: Tính tích các giá trị lẻ trong ma trận các số nguyên
+        public static int Bai_321(int[,] a)
+        {
+            int s = 0;
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    if (a[i, j] % 2 !=0) //gia tri le
+                    {
+                        s += a[i, j];
+                    }
+                }
+            }
+            return s;
+        }
+        //Bài 320: Tính tổng các số dương trong ma trận các số thực
+        public static double Bai_320(double[,] a)
+        {
+            double s = 0;
+            for (int i=0; i<a.GetLength(0); i++)
+            {
+                for (int j=0; j<a.GetLength(1); j++)
+                {
+                    if (a[i,j] > 0)
+                    {
+                        s += a[i,j];
+                    }
+                }
+            }
+            return s;
+        }
+
         //318 tong gia am ma tran so thuc
         public static double Bai_318(double[,] a)
         {
@@ -117,7 +197,7 @@ namespace Matran
             return false;
         }
         //315 tim max ma tran thuc
-        public static int Bai_315(int[,] a)
+        public static int Bai_315_TimMax(int[,] a)
         {
             int max = a[0, 0];
             for (int i = 0; i < a.GetLength(0); i++)
@@ -132,7 +212,7 @@ namespace Matran
             }
             return max;
         }
-        public static int[,] NhapMaTran()
+        public static int[,] NhapMaTran()  //nhap gia tra, tra ve mang
         {
             int[,] a;
             Console.Write("nhap so dong:");
@@ -182,7 +262,7 @@ namespace Matran
             }
             return s;
         }
-        public static void XuatMaTran(int[,] a)
+        public static void XuatMaTran(int[,] a) //nhap vao mang, tra ve void
         {
 
             for (int i = 0; i < a.GetLength(0); i++)
@@ -209,10 +289,7 @@ namespace Matran
             }
         }
         public static bool KTSoNT(int n)
-        {
-
-            //Console.Write($"nhap so: ");
-            //int n = int.Parse(Console.ReadLine());
+        {            
             if (n <= 1)
                 return false;
             else

@@ -25,11 +25,11 @@ namespace Tu_114
             //double kq = Bai_212(a);
             //Console.WriteLine($"kq la: {kq}");
 
+          
+
         }
-        public static int TestGit()
-        {
-            return 1;
-        }
+     
+
         //Bài 212: Tính trung bình cộng các số dương trong mảng 1 chiều các số thực
         public static double Bai_212(double[] a)
         {
