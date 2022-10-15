@@ -11,22 +11,72 @@ namespace Matran
         static void Main(string[] args)
         {
             //kieu nguyen
-            int[,] a;
-            a = NhapMaTran();
-            double kq = Bai_323(a);
-            XuatMaTran(a);
-            Console.WriteLine($"{kq}");
+            //int[,] a;
+            //a = NhapMaTran();
+            //double kq = Bai_325(a);
+            //XuatMaTran(a);
+            //Console.WriteLine($"{kq}");
 
             //kieu thuc
-            //    double[,] at;
-            //    at = NhapMaTranTHUC();
-            //    double kqt = Bai_320(at);
-            //    XuatMaTranTHUC(at);
-            //    Console.WriteLine($"{kqt}");
+            double[,] at;
+            at = NhapMaTranThucTEST();
+            double kqt = Bai_326(at);
+            XuatMaTranThucTEST(at);
+            Console.WriteLine($"{kqt}");
 
         }
+        //Bài 326: Tính trung bình cộng các số dương trong ma trận các số thực
+        public static double Bai_326_test(double[,] a)
+        {
+            double tong = 0;
+            int dem = 0;
+            for(int i=0; i<a.GetLength(0); i++)
+            {
+                for (int j=0; j<a.GetLength(1); j++)
+                {
+                    tong += a[i,j];
+                    dem++;
+                }
+            }
+            return tong / dem;
+        }
 
-         //327 tong bien
+        public static double[,] NhapMaTranThucTEST()
+        {
+            Console.Write("nhap so hang: ");
+            int n = int.Parse(Console.ReadLine());
+            Console.Write("nhap so cot: ");
+            int m = int.Parse(Console.ReadLine());
+            //khai bao ma tran moi
+            double[,] a = new double[n, m];
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    Console.Write($"a[{i},{j}]: ");
+                    a[i, j] = double.Parse(Console.ReadLine());
+                }
+                //Console.WriteLine();
+            }
+            return a;
+        }
+        public static void XuatMaTranThucTEST(double[,] a)
+        {
+            for(int i =0; i<a.GetLength(0); i++)
+            {
+                for(int j=0; j<a.GetLength(1); j++)
+                {
+                    Console.Write($"{a[i,j]} ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+
+
+
+
+        //327 tong bien
         public static int Bai_327(int[,] a)
         {
             int s = 0; //so luong so nguyen to
@@ -68,18 +118,67 @@ namespace Matran
             return tong / dem;
         }
 
+        //Bài 325: Tính tích các số chẵn trên 1 cột trong ma trận các số nguyên
+        public static int Bai_325(int[,] a)
+        {
+            Console.Write("nhap so COT can tinh: ");
+            int n = int.Parse(Console.ReadLine());
+            int tichChanCot = 1;
+            //kiem tra cot duong va <a.getlength(1)
+            if (n >= 0 && n < a.GetLength(1))
+            {
+                for (int i =0; i< a.GetLength(0); i++)
+                {
+                    if (a[i,n]%2 == 0)
+                    {
+                        tichChanCot *= a[i,n];
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("ban nhap so COT ko hop le");
+                return -1;
+            }
+            return tichChanCot;
+        }
 
+        //Bài 324: Tính tổng các giá trị dương trên 1 dòng trong ma trận các số thực
+        public static double Bai_324(double[,] a)
+        {
+            Console.Write("nhap so DONG can tinh:");
+            int n = int.Parse(Console.ReadLine());
+            double tongDuongDong = 0;
+            //kiem tra so dong duong va <a.GetLength(0)
+            if(n>=0 && n < a.GetLength(0))
+            {
+                for (int j = 0; j<a.GetLength(1); j++)
+                {
+                    if (a[n,j] >= 0)
+                    {
+                        tongDuongDong+=a[n,j];
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("so DONG ko hop le");
+                return -1;
+            }
+            return tongDuongDong;
+
+        }
 
 
         //Bài 323: Tính tích các giá trị dương trên 1 cột trong ma trận các số thực
         public static int Bai_323(int[,] a)
         {
-            //LUU y so cot >=0 va <a.GetLength(1)
+            
             Console.Write($"nhap so COT can tinh:");
             int n = int.Parse(Console.ReadLine());
             int tongCOT = 0;
             int tichCOT = 1;
-
+            //kiem tra so cot duong va be hon a.GetLength(1)
             if (n>=0 && n < a.GetLength(1))
             {            
                 for (int i = 0; i < a.GetLength(0); i++)
@@ -165,7 +264,7 @@ namespace Matran
         //317 dem so nguyen to ma tran so nguyen
         public static int Bai_317(int[,] a)
         {
-            //
+            
             int s = 0; //so luong so nguyen to
             for (int i = 0; i < a.GetLength(0); i++)
             {
