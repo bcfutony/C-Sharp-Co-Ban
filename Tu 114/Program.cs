@@ -664,6 +664,9 @@ namespace Tu_114
                         tmp = arr[j];
                         arr[j] = arr[i];
                         arr[i] = tmp;
+
+
+
                     }
                 }
             }

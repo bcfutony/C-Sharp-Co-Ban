@@ -6,23 +6,67 @@ using System.Threading.Tasks;
 
 namespace Matran
 {
+    struct PhanSo
+    {
+        public int TuSo;
+        public int MauSo;
+    }
+    struct ToaDo
+    {
+        public int X;
+        public int Y;
+    }
+   
     internal class Program
     {
         static void Main(string[] args)
         {
+            ToaDo a, b, c;
+
+            a = NhapToaDo();
+            b = NhapToaDo();
+            c = NhapToaDo();
+
+            //tinh tong
+            double s1, s2, s3;
+            s1 = TinhKhoangCach2Diem(a, b);
+            s2 = TinhKhoangCach2Diem(b, c);
+            s3 = TinhKhoangCach2Diem(c, a);
+
+            //xuat
+            Console.WriteLine($"{s1+s2+s3}");
+
             //kieu nguyen
-            //int[,] a;
-            //a = NhapMaTran();
-            //double kq = Bai_325(a);
-            //XuatMaTran(a);
-            //Console.WriteLine($"{kq}");
+            // int[,] a;
+            // a = NhapMaTran();
+            //Bai_319(a);
+            // XuatMaTran(a);
+            //  Console.WriteLine($"{kq}");
 
             //kieu thuc
-            double[,] at;
-            at = NhapMaTranThucTEST();
-            double kqt = Bai_326(at);
-            XuatMaTranThucTEST(at);
-            Console.WriteLine($"{kqt}");
+            //double[,] at;
+            //at = NhapMaTranThucTEST();
+            //double kqt = Bai_326(at);
+            //XuatMaTranThucTEST(at);
+            //Console.WriteLine($"{kqt}");
+
+        }
+        public static ToaDo NhapToaDo()
+        {
+            ToaDo kq;
+            Console.WriteLine("nhap toa do X: ");
+            kq.X = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("nhap toa do Y: ");
+            kq.Y = int.Parse(Console.ReadLine());
+
+            return kq;
+        }
+        public static double TinhKhoangCach2Diem(ToaDo a, ToaDo b)
+        {
+            double kq;
+            kq = Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y));
+            return kq;
 
         }
         //Bài 326: Tính trung bình cộng các số dương trong ma trận các số thực
@@ -243,6 +287,61 @@ namespace Matran
                 }
             }
             return s;
+        }
+
+        //Bài 319: Viết hàm sắp xếp ma trận các số thực tăng dần từ trên xuống dưới và từ trái sang phải
+        public static void Bai_319(int[,] a)
+        {
+            //dua mang 2 chieu vao mang 1 chieu
+            int n = a.GetLength(0) * a.GetLength(1);
+            int[] b = new int[n];
+            int k = 0;
+            for (int i=0; i < a.GetLength(0); i++)
+            {
+                for (int j=0; j < a.GetLength(1); j++)
+                {
+                    b[k] = a[i,j];
+                    k++;
+                }
+            }
+            //sap xep tang mang 1 chieu
+            SXMangtang(b);
+
+            //dua vao mang 1 chieu dua vao mang 2 chieu
+            k = 0;
+            for(int i=0; i<a.GetLength(0); i++)
+            {
+                for(int j=0; j<a.GetLength(1); j++)
+                {
+                    a[i, j] = b[k];
+                    k++;
+                }
+            }
+        }
+        //sap xep tang dan mang 1 chieu
+        public static int[] SXMangtang(int[] a)
+        {
+            int tmp;
+
+            for(int i=0; i<a.Length; i++)
+            {
+                for (int j=i+1; j<a.Length; j++)
+                {
+                    if (a[j] < a[i])
+                    {
+                        tmp = a[j];                        
+                        a[j] = a[i];
+                        a[i] = tmp;
+                       
+                    }
+                }
+            }
+            for(int i=0; i<a.Length; i++)
+            {
+                Console.Write($"{a[i]} ");
+            }
+            Console.WriteLine();
+            return a;
         }
 
         //318 tong gia am ma tran so thuc
