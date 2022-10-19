@@ -10,6 +10,7 @@ namespace b3_bt_ve_nha
     {
         static void Main(string[] args)
         {
+            //tim so nho nhat
             int a, b, c, d;
             Console.WriteLine("vui long nhap a");
             a = int.Parse(Console.ReadLine());

@@ -10,25 +10,8 @@ namespace Matran
     
     internal class XuLyPhanSo
     {
-        public static ToaDo NhapToaDo()
-        {
-            ToaDo kq;
-            Console.WriteLine("nhap toa do X: ");
-            kq.X = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("nhap toa do Y: ");
-            kq.Y = int.Parse(Console.ReadLine());
-            
-            return kq;
-        }
-        public static double TinhKhoangCach2Diem(ToaDo a, ToaDo b)
-        {
-            double kq;
-            kq = Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y));
-            return kq;
-                
-
-        }
+       
+       
         public static PhanSo NhapPhanSo()
         {
             PhanSo kq;
