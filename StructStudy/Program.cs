@@ -46,10 +46,7 @@ namespace StructStudy
             //    Console.WriteLine("tam giac ko hop le");
             //}
 
-            //PhanSo a, b;
-            //a = NhapPhanSo();
-            //b = NhapPhanSo();
-            //SoSanhPhanSo(a, b);
+           
             PhanSo a, b;
             a = NhapPhanSo();
             b = NhapPhanSo();
