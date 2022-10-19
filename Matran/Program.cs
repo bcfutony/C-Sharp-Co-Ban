@@ -11,37 +11,25 @@ namespace Matran
         public int TuSo;
         public int MauSo;
     }
-    struct ToaDo
-    {
-        public int X;
-        public int Y;
-    }
+    
    
     internal class Program
     {
         static void Main(string[] args)
         {
-            ToaDo a, b, c;
+            //TamGiac tg;
+            //tg = NhapTamGiac();
+            //double kq = TinhChuVi(tg);
+            //Console.WriteLine($"ket qua la: {kq}");
 
-            a = NhapToaDo();
-            b = NhapToaDo();
-            c = NhapToaDo();
 
-            //tinh tong
-            double s1, s2, s3;
-            s1 = TinhKhoangCach2Diem(a, b);
-            s2 = TinhKhoangCach2Diem(b, c);
-            s3 = TinhKhoangCach2Diem(c, a);
-
-            //xuat
-            Console.WriteLine($"{s1+s2+s3}");
 
             //kieu nguyen
-            // int[,] a;
-            // a = NhapMaTran();
-            //Bai_319(a);
-            // XuatMaTran(a);
-            //  Console.WriteLine($"{kq}");
+            int[,] a;
+            a = NhapMaTran();
+           int kq = Bai_341(a);
+            XuatMaTran(a);
+            Console.WriteLine($"{kq}");
 
             //kieu thuc
             //double[,] at;
@@ -51,86 +39,67 @@ namespace Matran
             //Console.WriteLine($"{kqt}");
 
         }
-        public static ToaDo NhapToaDo()
-        {
-            ToaDo kq;
-            Console.WriteLine("nhap toa do X: ");
-            kq.X = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("nhap toa do Y: ");
-            kq.Y = int.Parse(Console.ReadLine());
 
-            return kq;
-        }
-        public static double TinhKhoangCach2Diem(ToaDo a, ToaDo b)
-        {
-            double kq;
-            kq = Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y));
-            return kq;
 
-        }
-        //Bài 326: Tính trung bình cộng các số dương trong ma trận các số thực
-        public static double Bai_326_test(double[,] a)
+
+
+
+        //Bài 341: Đếm số lượng số dương trên biên trong ma trận các số thực
+
+        public static int Bai_341(int[,] a)
         {
-            double tong = 0;
+            int s = 0;
             int dem = 0;
-            for(int i=0; i<a.GetLength(0); i++)
+            //tong bien hang
+            for(int j=0; j<a.GetLength(1); j++)
             {
-                for (int j=0; j<a.GetLength(1); j++)
+                //hang tren cung
+                if (a[0, j] > 0)
                 {
-                    tong += a[i,j];
+                    s = s + a[0, j];
+                    dem++;
+                }
+                //hang cuoi cung
+                if (a[a.GetLength(0)-1,j] > 0 && a.GetLength(0)>=2)
+                {
+                    s = s + a[a.GetLength(0) - 1,j];
                     dem++;
                 }
             }
-            return tong / dem;
-        }
-
-        public static double[,] NhapMaTranThucTEST()
-        {
-            Console.Write("nhap so hang: ");
-            int n = int.Parse(Console.ReadLine());
-            Console.Write("nhap so cot: ");
-            int m = int.Parse(Console.ReadLine());
-            //khai bao ma tran moi
-            double[,] a = new double[n, m];
-            for (int i = 0; i < a.GetLength(0); i++)
+            //tong cot. bo cot o hang dau va hang cuoi
+            for(int i=1; i<a.GetLength(0)-1; i++)
             {
-                for (int j = 0; j < a.GetLength(1); j++)
+                //cot dau tien
+                if (a[i, 0] > 0)
                 {
-                    Console.Write($"a[{i},{j}]: ");
-                    a[i, j] = double.Parse(Console.ReadLine());
+                    s = s + a[i, 0];
+                    dem++;
                 }
-                //Console.WriteLine();
-            }
-            return a;
-        }
-        public static void XuatMaTranThucTEST(double[,] a)
-        {
-            for(int i =0; i<a.GetLength(0); i++)
-            {
-                for(int j=0; j<a.GetLength(1); j++)
+                //cot cuoi cung
+                if (a[i, a.GetLength(1)-1] > 0 && a.GetLength(1)>=2)
                 {
-                    Console.Write($"{a[i,j]} ");
+                    s = s + a[i, a.GetLength(1) - 1];
+                    dem++;
                 }
-                Console.WriteLine();
             }
+            return dem;
         }
 
 
 
 
-
-        //327 tong bien
+        //327 tong phan tu bien
         public static int Bai_327(int[,] a)
         {
             int s = 0; //so luong so nguyen to
             //tong bien dong
             for (int j = 0; j < a.GetLength(1); j++)
             {
-                s = s + a[0, j];
+                s = s + a[0, j]; //tong gia tri hang dau
                 if (a.GetLength(0) >= 2) //neu dong lon hon 2
                 {
-                    s = s + a[a.GetLength(0) - 1, j];
+                    s = s + a[a.GetLength(0) - 1, j]; //tong cac gia tri hang cuoi
                 }
                 
             }
@@ -290,6 +259,32 @@ namespace Matran
         }
 
         //Bài 319: Viết hàm sắp xếp ma trận các số thực tăng dần từ trên xuống dưới và từ trái sang phải
+        public static void Bai_319_OT(int[,] a)
+        {
+            //dua mang 2 chieu vao 1 chieu
+            int n = a.GetLength(0) * a.GetLength(1);
+            int[] b = new int[n];
+            int k = 0;
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    b[k] = a[i, j];
+                    k++;
+                }
+            }
+            SXMangtang(b);
+            //dua mang 1 chieu ve lai
+            k = 0;
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    a[i, j] = b[k];
+                    k++;
+                }
+            }
+        }
         public static void Bai_319(int[,] a)
         {
             //dua mang 2 chieu vao mang 1 chieu
