@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace StructStudy
 {
-    struct PSontap
-    {
-        public int TuSo;
-        public int MauSo;
-    }
+  
     struct PhanSo
     {
         public int TuSo;
@@ -54,9 +50,9 @@ namespace StructStudy
             //a = NhapPhanSo();
             //b = NhapPhanSo();
             //SoSanhPhanSo(a, b);
-            PSontap a, b;
-            a = NhapPS();
-            b = NhapPS();
+            PhanSo a, b;
+            a = NhapPhanSo();
+            b = NhapPhanSo();
             CongPS(a, b);
         }
         public static PhanSo NhapPhanSo()
@@ -68,16 +64,8 @@ namespace StructStudy
             kq.MauSo = int.Parse(Console.ReadLine());
             return kq;
         }
-        public static PSontap NhapPS()
-        {
-            PSontap kq;
-            Console.Write("nhap tu so: ");
-            kq.TuSo = int.Parse(Console.ReadLine());
-            Console.Write("nhap mau so: ");
-            kq.MauSo = int.Parse(Console.ReadLine());
-            return kq;
-        }
-        public static void CongPS(PSontap a, PSontap b)
+        
+        public static void CongPS(PhanSo a, PhanSo b)
         {
             Console.Write($"{a.TuSo*b.MauSo+a.MauSo*b.TuSo}/{a.MauSo*b.MauSo}");
         }
