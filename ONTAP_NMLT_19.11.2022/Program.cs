@@ -15,8 +15,13 @@ namespace ONTAP_NMLT_19._11._2022
             //GIAI PHUONG TRINH BAC 2
             //TIM NGAY GIO
             //UOC CHUNG NN BOI CHUNG LON NHAT
-            PTB2(0, 0, 0);
+            // PTB2(0, 0, 0);
+            Console.Write("vui long nhap n: ");
+            int n = int.Parse(Console.ReadLine());            
+            Tinhtong15(n);
         }
+        //hay Bài 18: Tính S(n) = 1 + x^2/2! + x^4/4! + … + x^2n/(2n)!
+        
         //GIAI PT BAC 1 ax+b=0
         public static void PTB1()
         {
@@ -74,7 +79,21 @@ namespace ONTAP_NMLT_19._11._2022
                         $"x2= {(-b - Math.Sqrt(delta)) / (2.0 * a)}");
                 }
             }
+
         }
+        //Bài 15: Tính S(n) = 1 + 1/1 + 2 + 1/ 1 + 2 + 3 + ….. + 1/ 1 + 2 + 3 + …. + N
+        public static void Tinhtong15(int n)
+        {
+            double S = 0;
+            int tong = 0;
+            for(int i=1; i<=n; i++)
+            {
+                tong = tong + i;
+                S = S + 1.0 /tong;              
+            }
+            Console.WriteLine($"\ntong lasdafs : {S}");
+
+        }       
 
 
 
