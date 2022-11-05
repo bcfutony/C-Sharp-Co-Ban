@@ -913,6 +913,9 @@ namespace tong_1_den_n
         //UCLN
         public static int UCLN(int a, int b)
         {
+            //vd 6, 3
+            // 6-3 =3 , b=3.
+            // a=b. tra ve a, hay b
             while (a != b)
             {
                 if (a > b)

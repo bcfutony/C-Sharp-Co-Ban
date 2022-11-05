@@ -10,15 +10,96 @@ namespace ONTAP_NMLT_19._11._2022
     {
         static void Main(string[] args)
         {
-            //GIAI PT BAC 1
-            //GIAI PHUONG TRINH BAC 2
+            //GIAI PT BAC 1.   //GIAI PHUONG TRINH BAC 2
             //TIM NGAY GIO
             //UOC CHUNG NN BOI CHUNG LON NHAT
-            // PTB2(0, 0, 0);
+            // so nguyen to, doi xuong, chinh phuong
             Console.WriteLine("nhap n: ");
             int n = int.Parse(Console.ReadLine());
-            int dem = Bai_53(n);
-            Console.WriteLine($"{dem}");
+            bool kq = KT_SoHoanthien(n);
+            Console.Write(kq);
+        }
+        //Số hoàn hảo (hay còn gọi là số hoàn chỉnh, số hoàn thiện hoặc số hoàn thành) là một số nguyên dương mà
+        //tổng các ước nguyên dương thực sự của nó (các số nguyên dương bị nó chia hết ngoại trừ nó) bằng chính nó
+        //6=s(6)=1+2+3
+        //28=s(28)=1+2+4+7+14
+        public static bool KT_SoHoanthien(int n)
+        {
+            int tonguocso = 0;
+            for (int i = 1; i <= n / 2; i++)
+            {
+                if (n % i == 0)
+                {
+                    tonguocso += i;//tong cac uoc
+                }
+            }
+            return tonguocso == n;
+        }
+        public static bool KT_soNguyento(int n)
+        {
+            //n =1, 2 ko tinh
+            //n tu 2 tro len
+            //
+            if(n <= 1)
+            {
+                return false;
+            }
+            else
+            {
+                for (int i = 2; i <= n / 2; i++)
+                {
+                    if (n % i == 0)
+                        return false;
+                }
+            }
+            
+            return true;
+        }
+        public static bool KT_soChinhphuong(int n)
+        {
+            //so binh phuong so tu nhien
+            //Math.Sqr(4)=2. Math.Sqr(5)=2
+            //binh phuong len bang n thi chinh phuong
+            int cbhai = (int)Math.Sqrt(n);
+            // Console.Write(cbhai);
+            return cbhai * cbhai == n;
+        }
+        //kiem tra so doi xung
+        public static bool KT_sodx(int n)
+        {
+
+            //vd 12321
+            //tim so dx - chinh no =0 : dx
+            //tim so dxung: 12321/10 = 1232 du 1. Lay so 1 nhan 10^4 (dem-1)
+            //1232/10 = 123 du 2. lay so 2 nhan 10^3 (dem-1)
+            //...
+            int demcs = DemSoCS(n);
+            double songhichdao = 0;
+            for(int i=n; i!=0; i = i / 10)
+            {
+                int cs = i % 10;
+                songhichdao = songhichdao+ cs*Math.Pow(10, demcs-1);
+                demcs = demcs - 1;
+            }
+            Console.WriteLine(songhichdao);
+            //if (songhichdao == n)
+            //    return true;
+            //return false;
+            return songhichdao == n;
+
+        }
+        public static int DemSoCS(int n)
+        {
+            int dem = 0;
+            for(int i=n; i!=0; i = i / 10)
+            {
+                dem++;
+                //123. khac 0. dem = 1. i=12
+                //12. khac 0. dem =2. i=1
+                //1. khac 0. dem 3. i = 0. ket thuc vong
+
+            }
+            return dem;
         }
         //Bài 53: Hãy đếm số lượng chữ số lớn nhất của số nguyên dương n
         //HAY Bài 54: Hãy đếm số lượng chữ số nhỏ nhất của số nguyên dương n
