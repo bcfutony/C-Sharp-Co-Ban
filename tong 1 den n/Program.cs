@@ -12,13 +12,11 @@ namespace tong_1_den_n
         {
             //go bai can chay
             //vi du Bai_100();
-            
+
 
             //Bai_31_KTSoNT(n);
-            if (Bai_31_KTSoNT())
-                Console.WriteLine($"là nguyen to");
-            else
-                Console.WriteLine($"ko la Nt ");
+            bool kq = Bai_59(12321);
+            Console.Write(kq);
         } //dong ngoac main
 
         //Bai 31 kiem tra so nguyen to
@@ -969,7 +967,41 @@ namespace tong_1_den_n
         /// bai nay chua lam
         /// </summary>
         /// <returns></returns>
+        public static bool Bai_59(int n)
+        {
+            //12321 dx
+            //tach ra tung so
+            //hop lai 
+            //dx tru nhau =0;
+            int dem = DemCS(n);
+            double songhichdao = 0;
+            for(int i =n; i!=0; i = i / 10)
+            {
+                //vidu 3, 2, 1
+                //3*10^(3-1) =300 (dem-1)
+                //3*10^(3-1) +2*10^(2-1) = 320
+                //3*10^(3-1) +2*10^(2-1)+ 1*10^(1-1) = 321
+                int cs = i % 10; 
+               
+                songhichdao += cs * Math.Pow(10,dem-1);
+                dem = dem - 1;
 
+
+            }
+            Console.WriteLine($"so nghich doao: {songhichdao}");
+            if (n == songhichdao)
+                return true;
+            return false;
+        }
+        public static int DemCS(int n)
+        {
+            int dem = 0;
+            for(int i=n; i!=0; i=i / 10)
+            {
+                dem++;
+            }
+            return dem;
+        }
 
         //Bài 56: Hãy kiểm tra số nguyên dương n có toàn chữ số lẻ hay không
         //Bài 57: Hãy kiểm tra số nguyên dương n có toàn chữ số chẵn hay không

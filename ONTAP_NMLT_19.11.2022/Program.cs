@@ -17,9 +17,100 @@ namespace ONTAP_NMLT_19._11._2022
             // PTB2(0, 0, 0);
             Console.WriteLine("nhap n: ");
             int n = int.Parse(Console.ReadLine());
-            int uoclemax = Bai_29(n);
-            Console.WriteLine(uoclemax);
+            int dem = Bai_53(n);
+            Console.WriteLine($"{dem}");
         }
+        //Bài 53: Hãy đếm số lượng chữ số lớn nhất của số nguyên dương n
+        //HAY Bài 54: Hãy đếm số lượng chữ số nhỏ nhất của số nguyên dương n
+        public static int Bai_53(int n)
+        {
+            int dem = 0;
+            int max = TimCSmax(n);
+            for (int i = n; i != 0; i = i / 10)
+            {
+                int cs = i % 10;
+                if (cs == max)
+                    dem++;
+
+            }
+            return dem;
+        }
+        public static int TimCSmax(int n)
+        {
+            int max = 0;
+            for (int i = n; i !=0; i = i / 10)
+            {
+                int cs = i % 10;
+                if(max<cs)
+                    max = cs;
+            }
+            return max;
+        }
+        //Bài 47: Hãy tính tổng các chữ số chẵn của số nguyên dương n
+        //Bài 48: Hãy tính tích các chữ số lẻ của số nguyên dương n
+        public static int Bai_47(int n)
+        {
+            int tong = 0;
+            int csdau = 0;
+            for(int i=n; i!=0; i = i / 10)
+            {
+                
+               
+                int cs = i % 10;
+                if (cs % 2 == 0)
+                    tong = tong + cs;
+            }
+            return tong;
+        }
+        //Bài 46: Hãy đếm số lượng chữ số lẻ của số nguyên dương n
+
+        public static int Bai_46(int n)
+        {
+            int dem = 0;
+            for (int i = n; i != 0; i = i / 10)
+            {
+                int a = i % 10; //
+                
+                if (a % 2 != 0) 
+                { 
+                    dem = dem + a; 
+                }
+            }
+            return dem;
+        }
+
+        //Bài 44: Hãy tính tổng các chữ số của số nguyên dương n
+        //Bài 45: Hãy tính tích các chữ số của số nguyên dương n
+
+        public static int Bai_44(int n)
+        {
+            int tong = 0;
+            int tich = 1;
+            for(int i = n; i!=0; i = i / 10)
+            {
+                tich = tich * (i % 10);
+                tong = tong + i%10;
+
+            }
+            Console.WriteLine($"tich: {tich}");
+            return tong;
+        }
+        //Bài 43: Hãy đếm số lượng chữ số của số nguyên dương n
+        public static int Bai_43(int n)
+        {
+            //201/10=20 du 1
+            //20/10 =2 du 0
+            //2/10 =0 du 0
+            int dem = 0;
+            for(int i=n; i!=0; i = i / 10)
+            {
+                
+                dem++;
+            }
+            
+            return dem;
+        }
+
         //Bài 29: Tìm ước số lẻ lớn nhất của số nguyên dương n. Ví dụ n = 100 ước lẻ lớn nhất là 25
         public static int Bai_29(int n)
         {
