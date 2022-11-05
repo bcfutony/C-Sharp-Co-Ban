@@ -14,11 +14,243 @@ namespace ONTAP_NMLT_19._11._2022
             //TIM NGAY GIO
             //UOC CHUNG NN BOI CHUNG LON NHAT
             // so nguyen to, doi xuong, chinh phuong
-            Console.WriteLine("nhap n: ");
-            int n = int.Parse(Console.ReadLine());
-            bool kq = KT_SoHoanthien(n);
+
+            int[] a = Nhapmang();
+            int kq = Bai_151_soNTLonnhat(a);
             Console.Write(kq);
+            //Xuatmang(b);
+          
         }
+        //Bài 151: Hãy tìm số nguyên tố lớn nhất trong mảng 1 chiều các số nguyên. Nếu mảng không có số nguyên tố thì trả về -1
+        //Bài 152: Hãy tìm số hoàn thiện nhỏ nhất trong mảng 1 chiều các số nguyên.Nếu mảng không có số hoàn thiện thì trả về -1
+        public static int Bai_151_soNTLonnhat(int[] a)
+        {
+            int soNTMAX = -1;
+            for(int i=0; i<a.Length; i++)
+            {
+                if (KT_soNguyento(a[i]))
+                {
+                    if (soNTMAX < a[i])
+                        soNTMAX = a[i];
+                }
+                
+            }
+            return soNTMAX;
+        }
+
+        //Bài 139: Tìm vị trí số hoàn thiện cuối cùng trong mảng 1 chiều các số nguyên. Nếu mảng không có số hoàn thiện thì trả về giá trị  -1
+        //so hoan thien tong cac uoc so == chinh no
+        //vd: 6 co uoc 1, 2, 3 la so hoan thien
+        public static int Bai_139_vitriSoHTcuoi(int[] a)
+        {
+            for(int i = a.Length - 1; i >= 0; i--)
+            {
+
+                if (KT_SoHoanthien(a[i]))
+                {
+                    return i;
+                }
+                
+            }
+            return -1;
+        }
+
+        //127.Viết hàm sắp xếp mảng một chiều các số thực tăng dần.
+        //dang lam cho so nguyen
+        public static int[] Bai_127(int[] arr)
+        {
+            int i, j, tmp;
+            Console.Write("\nSap xep mang theo thu tu tang dan\n");
+            Console.Write("-----------------------------------\n");
+
+            //int[] arr = Nhapmang();
+            for (i = 0; i < arr.Length; i++)
+            {
+                for (j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[i]) //muon i nho nhat
+                    {
+                        //doi gia tri
+                        //tmp = arr[j];
+                        //arr[j] = arr[i];
+                        //arr[i] = tmp;
+
+                        tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+
+
+                    }
+                }
+            }
+            //Xuatmang(arr);
+            return arr;
+        }
+
+        //Bài 122: Viết hàm tìm giá trị lớn nhất trong mảng 1 chiều các số thực
+        public static int Bai_122_TimPTlonnhat()
+        {
+            int[] a = Nhapmang();
+            int max = a[0];
+            for(int i =0; i<a.Length; i++)
+            {
+                if (max < a[i])
+                    max = a[i];
+            }
+            Xuatmang(a);
+            return max;
+        }
+        //nhap mang
+        public static int[] Nhapmang()
+        {
+            Console.WriteLine("nhap so pt mang: ");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            Console.WriteLine($"do dai mang a.Length: {a.Length}");
+            for(int i = 0; i<a.Length; i++)
+            {
+                Console.Write($"nhap gia tri a[{i}]: ");
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            return a;
+        }
+        //xuat mang
+        public static void Xuatmang(int[] a)
+        {
+            for(int i=0; i<a.Length; i++)
+            {
+                Console.Write($"gia tri a[{i}]: {a[i]} \n");
+            }
+        }
+
+
+
+        //Bài 101: Viết chương trình nhập tháng, năm. Hãy cho biết tháng đó có bao nhiêu ngày
+        //chua//--//Bài 102: Viết chương trình nhập vào 1 ngày ( ngày, tháng, năm). Tìm ngày kế ngày vừa nhập (ngày, tháng, năm)
+        //Bài 103: Viết chương trình nhập vào 1 ngày ( ngày, tháng, năm). Tìm ngày trước ngày vừa nhập (ngày, tháng, năm)
+        //Bài 104: Viết chương trình nhập ngày, tháng, năm. Tính xem ngày đó là ngày thứ bao nhiêu trong năm
+        public static void XuatNgaytruocdo(int ngay, int thang, int nam)
+        {
+
+            //nhap ngay thang nam, xuat ngay ke tiep
+            int ngaytrongthang = 31;
+            int ngayketiep = 0;
+            int thangketiep = 0;
+            int namketiep = 0;
+            if ((thang == 4) || (thang == 6) || (thang == 9) || (thang == 11))
+            {
+                ngaytrongthang = 30;
+
+            }
+            if (thang == 2)
+            {
+                if ((nam % 400 == 0) || (nam % 100 != 0 && nam % 4 == 0))
+                {
+                    ngaytrongthang = 29;
+
+                }
+                else
+                {
+                    ngaytrongthang = 28;
+                }
+
+            }
+            //ngay cuoi nam
+
+            if (ngay > 1)
+            {
+                ngayketiep = ngay -1;
+                thangketiep = thang;
+                namketiep = nam;
+            }
+            else if (ngay == 1 && thang != 1)
+            {
+                ngayketiep = ngaytrongthang;
+                thangketiep = thang - 1;
+                namketiep = nam;
+            }
+            else if (ngay == 1 && thang == 1)
+            {
+                ngayketiep = 31;
+                thangketiep = 12;
+                namketiep = nam - 1;
+            }
+            Console.WriteLine($"ngay {ngayketiep}, thang {thangketiep}, nam {namketiep}");
+        }
+
+
+
+        public static void XuatNgayKeTiep(int ngay, int thang, int nam)
+        {
+            //nhap ngay thang nam, xuat ngay ke tiep
+            int ngaytrongthang = 31;
+            int ngayketiep = 0;
+            int thangketiep = 0;
+            int namketiep = 0;
+            if((thang== 4) || (thang == 6) || (thang == 9) || (thang == 11))
+            {
+                ngaytrongthang = 30;
+               
+            }
+            if (thang == 2)
+            {
+                if((nam%400==0) || (nam%100!=0 && nam % 4 == 0))
+                {
+                    ngaytrongthang = 29;
+                    
+                }
+                else
+                {
+                    ngaytrongthang = 28;
+                }
+
+            }
+            //ngay cuoi nam
+            
+            if (ngay < ngaytrongthang)
+            {
+                ngayketiep = ngay + 1;
+                thangketiep = thang;
+                namketiep = nam;
+            }
+            else if (ngay == ngaytrongthang && thang !=12)  {
+                ngayketiep = 1;
+                thangketiep = thang + 1;
+                namketiep = nam;
+            }
+            else if (ngay ==ngaytrongthang && thang == 12)
+            {
+                ngayketiep = 1;
+                thangketiep = 1;
+                namketiep = nam+1;
+            }
+            Console.WriteLine($"ngay {ngayketiep}, thang {thangketiep}, nam {namketiep}");
+
+        }
+        public static int NhapNgaythangnam(int thang, int nam)
+        {
+            //thang 2: 28 hay 29 ngay2 tuy thuoc nam
+            //1357-81012 thang co 31 ngay
+            //46911
+            int ngaytrongthang = 31; 
+            if((thang==4)|| (thang == 6)||(thang == 9) || (thang == 11))
+            {
+                ngaytrongthang = 30;
+            }
+            if (thang == 2)
+            {
+                if ((nam % 400 == 0) || (nam % 100 != 0 && nam % 4 == 0))
+                {
+                    ngaytrongthang = 29;
+                }
+                else
+                    ngaytrongthang = 28;
+            }
+            return ngaytrongthang;
+        }
+
+
+
         //Số hoàn hảo (hay còn gọi là số hoàn chỉnh, số hoàn thiện hoặc số hoàn thành) là một số nguyên dương mà
         //tổng các ước nguyên dương thực sự của nó (các số nguyên dương bị nó chia hết ngoại trừ nó) bằng chính nó
         //6=s(6)=1+2+3
@@ -339,18 +571,7 @@ namespace ONTAP_NMLT_19._11._2022
 
         }
         //Bài 15: Tính S(n) = 1 + 1/1 + 2 + 1/ 1 + 2 + 3 + ….. + 1/ 1 + 2 + 3 + …. + N
-        public static void Tinhtong15(int n)
-        {
-            double S = 0;
-            int tong = 0;
-            for(int i=1; i<=n; i++)
-            {
-                tong = tong + i;
-                S = S + 1.0 /tong;              
-            }
-            Console.WriteLine($"\ntong lasdafs : {S}");
-
-        }       
+       
 
 
 

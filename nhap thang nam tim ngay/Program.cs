@@ -32,7 +32,9 @@ namespace nhap_thang_nam_tim_ngay
             {
                 //nam tron the ky (tan cung..00) thi chia het 400
                 //nam ko trong the ky thi chia het cho 4, ko chia het 100
-                if ((nam % 400 == 0)||(nam%4==0 && nam%100!=0))
+                //1700%4= so du 0. 1700%100 so du 0
+                //if ((nam % 400 == 0)||(nam%4==0 && nam%100!=0))
+                if((nam%400==0) || (nam%100!=0 && nam%4==0))
                 {
                     //nam nhuan
                     Console.WriteLine($"nam {nam} NHUAN, thang {thang} co 29 ngay");
