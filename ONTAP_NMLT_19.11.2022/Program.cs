@@ -15,11 +15,208 @@ namespace ONTAP_NMLT_19._11._2022
             //UOC CHUNG NN BOI CHUNG LON NHAT
             // so nguyen to, doi xuong, chinh phuong
 
-            int[] a = Nhapmang();
-            int kq = Bai_151_soNTLonnhat(a);
+            int[,] a = NhapMatran();
+            XuatMatran(a);
+            int kq = Bai_327(a);
             Console.Write(kq);
-            //Xuatmang(b);
           
+        }
+        //MANG 2 CHIEU 
+        //MA TRAN
+        //
+        //Bài 327: Tính tổng các giá trị nằm trên biên của ma trận
+        public static int Bai_327(int[,] a)
+        {
+            int s = 0; //so luong so nguyen to
+            //tong bien dong
+            for (int j = 0; j < a.GetLength(1); j++)
+            {
+                s = s + a[0, j]; //tong gia tri hang dau
+                if (a.GetLength(0) >= 2) //neu dong lon hon 2
+                {
+                    s = s + a[a.GetLength(0) - 1, j]; //tong cac gia tri hang cuoi
+                }
+
+            }
+            //tong bien cot
+            for (int i = 1; i < a.GetLength(0) - 1; i++) //bo cot o hang cuoi cung nen -1
+            {
+                s = s + a[i, 0];
+                if (a.GetLength(1) >= 2) //neu cot lon hon 2
+                {
+                    s = s + a[i, a.GetLength(1) - 1];
+                }
+
+            }
+            return s;
+        }
+        //Bài 326: Tính trung bình cộng các số dương trong ma trận các số thực
+        public static double Bai_326Trungbinhcong(int[,] a)
+        {
+            int dem = 0;
+            int tong = 0;
+            for(int i =0; i<a.GetLength(0); i++)
+            {
+                for(int j=0; j<a.GetLength(1); j++)
+                {
+                    tong = tong + a[i, j];
+                    dem++;
+                }
+            }
+            return 1.0*tong / dem;
+        }
+
+
+        //Bài 319: Viết hàm sắp xếp ma trận các số thực tăng dần từ trên xuống dưới và từ trái sang phải
+        public static void Bai_319(int[,] a)
+        {
+            int n = a.GetLength(0)*a.GetLength(1);
+            int[] b = new int[n];
+            int k = 0;
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    b[k] = a[i,j];
+                    k++;
+                }
+            }
+            XuatMatran(a);
+            SXmang(b);
+            k = 0;
+            for(int i = 0; i < a.GetLength(0); i++)
+            {
+                for(int j=0; j<a.GetLength(1); j++)
+                {
+                    a[i, j] = b[k];
+                    k++;
+                }
+            }
+            XuatMatran(a);
+        }
+        //sap xep mang theo thu tu tang dan
+        public static int[] SXmang(int[] a)
+        {
+            int tmp;
+            for(int i=0; i<a.Length; i++)
+            {
+                for (int j = i + 1; j < a.Length; j++)
+                {
+                    if (a[j] < a[i])
+                    {
+                        tmp = a[i];
+                        a[i] = a[j];
+                        a[j] = tmp;
+                    }
+                }
+            }
+            return a;
+        }
+        //Bài 317: Viết hàm đếm số lượng số nguyên tố trong ma trận số nguyên
+        public static int Bai_317(int[,] a)
+        {
+            int dem = 0;
+            for(int i=0; i<a.GetLength(0); i++)
+            {
+                for(int j=0; j<a.GetLength(1); j++)
+                {
+                    if (KT_soNT2(a[i, j]))
+                    {
+                        Console.WriteLine(a[i, j]);
+                        dem++;
+                    }
+                }
+            }
+            return dem;
+        }
+        //kiem tra so nguyen to
+        public static bool KT_soNT2(int n)
+        {
+            if (n <= 1)
+            {
+                return false;
+            }
+            for(int i=2; i<=n/2; i++)
+            {
+                if (n%i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+             
+
+        //Bài 315: Viết hàm tìm giá trị lớn nhất trong ma trận số thực
+        public static int Bai_315(int[,] a)
+        {
+            int max = a[0, 0];
+            for(int i=0; i<a.GetLength(0); i++)
+            {
+                for(int j=0; j<a.GetLength(1); j++)
+                {
+                    if(a[i, j] > max)
+                        max = a[i, j];
+                }
+            }
+            return max;
+        }
+        //nhap mang 2 chieu
+        public static int[,] NhapMatran()
+        {
+            Console.Write("nhap n: ");
+            int n = int.Parse(Console.ReadLine());
+            Console.Write("nhap m: ");
+            int m = int.Parse(Console.ReadLine());
+            int[,] a = new int[n, m];
+            for(int i =0; i<a.GetLength(0); i++)
+            {
+                for(int j=0; j<a.GetLength(1); j++)
+                {
+                    Console.Write($"nhap pt mang a[{i},{j}]: ");
+                    a[i,j] = int.Parse(Console.ReadLine());
+                }
+            }
+            return a;
+
+        }
+        //xuat mang 2 chieu
+        public static void XuatMatran(int[,] a)
+        {
+            for(int i=0; i<a.GetLength(0); i++)
+            {
+                for(int j=0; j<a.GetLength(1); j++)
+                {
+                    Console.Write($"{a[i,j]} ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        //tim so chan nho nhat mang 1 chieu so nguyen
+        public static int Baithi(int[] a)
+        {
+            //tim so chan dau tien
+            int scmin = Sochandautien(a);
+
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] % 2 == 0)
+                {
+                    if (scmin > a[i])
+                        scmin = a[i];
+                }
+            }
+            return scmin;
+        }
+        public static int Sochandautien(int[] a)
+        {
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] % 2 == 0)
+                    return a[i];
+            }
+            return -1;
         }
         //Bài 151: Hãy tìm số nguyên tố lớn nhất trong mảng 1 chiều các số nguyên. Nếu mảng không có số nguyên tố thì trả về -1
         //Bài 152: Hãy tìm số hoàn thiện nhỏ nhất trong mảng 1 chiều các số nguyên.Nếu mảng không có số hoàn thiện thì trả về -1
@@ -119,7 +316,7 @@ namespace ONTAP_NMLT_19._11._2022
         {
             for(int i=0; i<a.Length; i++)
             {
-                Console.Write($"gia tri a[{i}]: {a[i]} \n");
+                Console.Write($"{a[i]} ");
             }
         }
 
