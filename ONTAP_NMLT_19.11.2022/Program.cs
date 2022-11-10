@@ -6,8 +6,29 @@ using System.Threading.Tasks;
 
 namespace ONTAP_NMLT_19._11._2022
 {
+    struct Phanso
+    {
+        public int tuso;
+        public int mauso;
+    }
+    struct Hocsinh
+    {
+        public int MaHs;
+        public string tenSV;
+        public int diemToan;
+        public int diemVan;
+
+    }
+    struct Lophoc
+    {
+        public string tenLop;
+        public Hocsinh[] dsHocsinh;
+    }
+
+
     internal class Program
     {
+        
         static void Main(string[] args)
         {
             //GIAI PT BAC 1.   //GIAI PHUONG TRINH BAC 2
@@ -15,12 +36,116 @@ namespace ONTAP_NMLT_19._11._2022
             //UOC CHUNG NN BOI CHUNG LON NHAT
             // so nguyen to, doi xuong, chinh phuong
 
-            int[,] a = NhapMatran();
-            XuatMatran(a);
-            int kq = Bai_327(a);
-            Console.Write(kq);
-          
+            //int[,] a = NhapMatran();
+            //XuatMatran(a);
+            //int kq = Bai_327(a);
+            //Console.Write(kq);
+
+            Lophoc lop = Nhaplop();
+           
+
+            Hocsinh kq = TimHSdiemcaonhat(lop);
+            Console.WriteLine(kq.tenSV);
+            Console.WriteLine(DiemTB(kq));
         }
+        public static Lophoc Nhaplop()
+        {
+            Lophoc lop;
+            lop.tenLop = "lop 10";
+            Console.Write("nhap so hoc sinh: ");
+            int n = int.Parse(Console.ReadLine());
+            lop.dsHocsinh = new Hocsinh[n];
+            for(int i=0;  i<n; i++)
+            {
+                lop.dsHocsinh[i] = NhapHS();
+                
+            }
+            
+            return lop;
+        }
+        public static Hocsinh NhapHS()
+        {
+            Hocsinh hs;
+           
+            Console.Write("nhap MaHS: ");
+            hs.MaHs = int.Parse(Console.ReadLine());
+            Console.Write("nhap Tenhs: ");
+            hs.tenSV = Console.ReadLine();
+            Console.Write("nhap diem toan: ");
+            hs.diemToan = int.Parse(Console.ReadLine());
+            Console.Write("nhap diem van: ");
+            hs.diemVan = int.Parse(Console.ReadLine());
+
+            return hs;
+        }
+        public static double DiemTB(Hocsinh hs)
+        {
+            return (hs.diemToan + hs.diemVan) / 2.0;
+        }
+        public static Hocsinh TimHSdiemcaonhat(Lophoc lop)
+        {
+            double maxdiem = 0;
+            int vitri = 0;
+            for(int i=0; i<lop.dsHocsinh.Length; i++)
+            {
+                double dtb = DiemTB(lop.dsHocsinh[i]);
+                if (dtb > maxdiem)
+                {
+                    maxdiem = dtb;
+                    vitri = i;
+                }
+            }
+
+            return lop.dsHocsinh[vitri];
+        }
+        public static Phanso NhapPS()
+        {
+            Phanso kq;
+            Console.WriteLine("nhap tu: ");
+            kq.tuso = int.Parse(Console.ReadLine());
+            Console.WriteLine("nhap mau: ");
+            kq.mauso = int.Parse(Console.ReadLine());
+           
+            return kq;
+        }
+        public static void CongPS(Phanso a, Phanso b)
+        {
+            Phanso kq;
+            kq.tuso = a.tuso * b.mauso + a.mauso * b.tuso;
+            kq.mauso = a.mauso * b.mauso;
+            Console.WriteLine($"ket qua la: {kq.tuso}/{kq.mauso}");
+            Phanso kqrutgon = RutgonPS(kq);
+            Console.WriteLine($"ket qua la: {kqrutgon.tuso}/{kqrutgon.mauso}");
+
+        }
+        public static Phanso RutgonPS(Phanso a)
+        {
+            int uocchung = UCLN(a.tuso, a.mauso);
+            Phanso b;
+            b.tuso = a.tuso / uocchung;
+            b.mauso = a.mauso / uocchung;
+            return b;
+
+        }
+        public static int UCLN(int a, int b)
+        {
+            while (a != 0 && b!=0 &&a!=b)
+            {
+                if (a > b)
+                {
+                    a = a - b;
+                }
+                if(b > a)
+                {
+                    b = b - a;
+                }
+            }           
+            return a;                
+            
+        }
+        
+
+        
         //MANG 2 CHIEU 
         //MA TRAN
         //
