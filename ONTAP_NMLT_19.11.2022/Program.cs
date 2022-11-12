@@ -150,6 +150,7 @@ namespace ONTAP_NMLT_19._11._2022
         //MA TRAN
         //
         //Bài 327: Tính tổng các giá trị nằm trên biên của ma trận
+        //ss
         public static int Bai_327(int[,] a)
         {
             int s = 0; //so luong so nguyen to
