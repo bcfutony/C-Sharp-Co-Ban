@@ -40,13 +40,174 @@ namespace ONTAP_NMLT_19._11._2022
             //XuatMatran(a);
             //int kq = Bai_327(a);
             //Console.Write(kq);
+            // XuatNgaytruocdo(1, 3, 2020);
+            int[] a = Nhapmang();
+            int sntmax = Sntmax(a);
+            Console.Write(sntmax);
 
-            Lophoc lop = Nhaplop();
-           
+        }
+        //tim so nto lon nhat trong mang 1 chieu
+        public  static int Sntmax(int[] a)
+        {
+            //tim so ngto dau tien
+            //kiem tra co phai so nt
+            //tim so max
+            int soNtmax =TimSntDautien(a);
+            //for(int i=0; i<a.Length; i++)
+            //{
+            //    if (KT_Snt(a[i]))  //neu la so nguyen to
+            //    {
+            //        if(soNtmax < a[i])
+            //        {
+            //            soNtmax = a[i];
+            //        }
+            //    }
+            //}
+            foreach(int i in a)
+            {
+                if(KT_Snt(i) && soNtmax <i)
+                    soNtmax = i;                  
+            }
+            return soNtmax;
+        }
+        public static int TimSntDautien(int[] a)
+        {
+            for(int i=0; i<a.Length; i++)
+            {
+                if (KT_Snt(a[i]))
+                {
+                    return a[i];
+                }
+            }
+            return -1; //ko co so nguyen to nao
+        }
+        public static bool KT_Snt(int a)
+        {
+            if (a <= 1)
+                return false;
+            if (a >= 2)
+            {
+                for(int i=2; i<=a/2; i++)
+                {
+                    if (a % i == 0)
+                        return false;
+                }
+            }
+            return true;
+        }
+             
+        public static void SSPS(Phanso a, Phanso b)
+        {
+            Phanso kq;
+            kq.tuso = a.tuso*b.mauso -a.mauso*b.tuso;
+            kq.mauso = a.mauso * b.mauso;
+            double hieuso = kq.tuso*1.0 / kq.mauso;
+            if (hieuso > 0)
+            {
+                Console.Write($"phan so {a.tuso}/{a.mauso} lon hon {b.tuso}/{b.mauso}");
+            }else if(hieuso == 0)
+            {
+                Console.Write($"phan so {a.tuso}/{a.mauso} = {b.tuso}/{b.mauso}");
+            }
+            else
+            {
+                Console.Write($"phan so {a.tuso}/{a.mauso} < {b.tuso}/{b.mauso}");
+            }
 
-            Hocsinh kq = TimHSdiemcaonhat(lop);
-            Console.WriteLine(kq.tenSV);
-            Console.WriteLine(DiemTB(kq));
+        }
+        //trung binh cong so nguyen tren bien
+        public static double TBC(int[,] a)
+        {
+            //123 i=0
+            //456 i=1
+            //589 i=2
+            int s = 0;
+            int dem = 0;
+            for(int j=0; j<a.GetLength(1); j++)
+            {
+                //hang dau tien
+                s = s + a[0, j];
+                dem++;
+                //hang cuoi cung, dk co 2 hang
+                if (a.GetLength(0) >= 2)
+                {
+                    s = s + a[a.GetLength(0) - 1, j];
+                    dem++;
+                }        
+
+            }
+            for(int i =1; i<a.GetLength(0)-1; i++)
+            {
+                s = s + a[i, 0];
+                dem++;
+                //cot cuoi cung, dk co 2 cot 
+                if (a.GetLength(1) >= 2)
+                {
+                    s = s + a[i, a.GetLength(1) - 1];
+                    dem++;
+                }
+                
+            }
+            return s*1.0/dem;
+        }
+        public static int NhapTN(int thang, int nam)
+        {
+            //
+            int songaytrongthang = 31; 
+            //4,6, 9,11 e0 ngy
+            if(thang ==4 || thang == 6 || thang == 9 || thang == 11)
+            {
+                songaytrongthang = 30;
+            }
+            else if(thang == 2)
+            {
+                if(nam%400==0 || (nam%100!=0 && nam % 4 == 0))
+                {
+                    songaytrongthang = 29;
+                }
+                else
+                {
+                    songaytrongthang = 28;
+                }
+
+            }
+            return songaytrongthang;
+        }
+        //so cha n nho nhat mang 1 chieu so nguye
+        public static int Sochannhonhat()
+        {
+            //nhap mang
+            Console.Write("nhap so pt mang: ");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            for(int i =0; i<n; i++)
+            {
+                Console.Write($"nhap pt a[{i}]: ");
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            //so chan dau tien
+            int scnn = SochanDT(a);
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] < scnn)
+                {
+                    scnn = a[i];
+                }
+            }
+            return scnn;
+        }
+        public static int SochanDT(int[] a)
+        {
+
+            for(int i=0; i<a.Length; i++)
+            {
+                if (a[i] % 2 == 0)
+                {
+                    return a[i];
+                }
+                
+            }
+            return -1;
         }
         public static Lophoc Nhaplop()
         {
@@ -454,43 +615,28 @@ namespace ONTAP_NMLT_19._11._2022
         //Bài 104: Viết chương trình nhập ngày, tháng, năm. Tính xem ngày đó là ngày thứ bao nhiêu trong năm
         public static void XuatNgaytruocdo(int ngay, int thang, int nam)
         {
-
             //nhap ngay thang nam, xuat ngay ke tiep
-            int ngaytrongthang = 31;
+            //int ngaytrongthang = 31;
             int ngayketiep = 0;
             int thangketiep = 0;
             int namketiep = 0;
-            if ((thang == 4) || (thang == 6) || (thang == 9) || (thang == 11))
-            {
-                ngaytrongthang = 30;
-
-            }
-            if (thang == 2)
-            {
-                if ((nam % 400 == 0) || (nam % 100 != 0 && nam % 4 == 0))
-                {
-                    ngaytrongthang = 29;
-
-                }
-                else
-                {
-                    ngaytrongthang = 28;
-                }
-
-            }
+           
             //ngay cuoi nam
 
             if (ngay > 1)
             {
-                ngayketiep = ngay -1;
+                
                 thangketiep = thang;
                 namketiep = nam;
+                ngayketiep = ngay - 1;
             }
             else if (ngay == 1 && thang != 1)
             {
-                ngayketiep = ngaytrongthang;
-                thangketiep = thang - 1;
-                namketiep = nam;
+               // ngayketiep = ngaytrongthang;//sai
+
+                thangketiep = thang - 1; //da biet thang
+                namketiep = nam; //da biet nam
+                ngayketiep = NhapNgaythangnam(thangketiep, namketiep);
             }
             else if (ngay == 1 && thang == 1)
             {
